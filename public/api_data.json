@@ -4264,54 +4264,6 @@
   {
     "type": "DELETE",
     "url": "/items/sightseeings/:requestId/:Id",
-    "title": "view an existing Sightseeing",
-    "version": "0.1.0",
-    "name": "DeleteThingsToDoItem",
-    "group": "Items_ThingsToDo",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "requestId",
-            "description": "<p>lead Id</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "Id",
-            "description": "<p>sightseeing Id</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Response-Example:",
-          "content": "\n {\n    \"RequestsThingstodo\": {\n        \"id\": \"306\",\n        \"request_id\": \"4572\",\n        \"thingstodo_id\": \"3\",\n        \"day\": \"7\",\n        \"start_time\": null,\n        \"end_time\": null,\n        \"price\": null,\n        \"currency_id\": null,\n        \"notes\": null,\n        \"guide_id\": null,\n        \"leader_id\": null,\n        \"date\": \"2010-02-20\",\n        \"pax\": null,\n        \"is_option\": null,\n        \"added_by\": \"51\",\n        \"cost_currency_id\": null,\n        \"cost_value\": null,\n        \"acc_journal_id\": null,\n        \"created\": null,\n        \"added_by_guide_id\": null,\n        \"contract_rate\": null,\n        \"contract_currency_id\": null,\n        \"parent_id\": null,\n        \"is_trip\": false,\n        \"tour_type\": null,\n        \"external_agency_id\": null,\n        \"guide_language_id\": null,\n        \"reservation_status_id\": \"1\",\n        \"pickup_location\": null,\n        \"dropoff_location\": null,\n        \"option_payment_method\": null\n    },\n    \"AddedBy\": {\n        \"name\": \"Amna Wasly\"\n    },\n    \"Thingstodo\": {\n        \"name\": \"Salah El Din / Mohamed Ali Citadel\"\n    },\n    \"Currency\": {\n        \"abbrev\": null\n    },\n    \"RequestsTodosCategory\": [\n        {\n            \"id\": \"1\",\n            \"requests_thingstodo_id\": \"306\",\n            \"thingstodos_category_id\": null,\n            \"qty\": \"1\"\n        }\n    ],\n    \"msg\": \"Data found successfully\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "{\n \"msg\": \"Data not found\",\n \"errors\": [\n     \"Id not found.\"\n   ]\n }",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/main.php",
-    "groupTitle": "Items_ThingsToDo"
-  },
-  {
-    "type": "DELETE",
-    "url": "/items/sightseeings/:requestId/:Id",
     "title": "Delete an existing Sightseeing",
     "version": "0.1.0",
     "name": "DeleteThingsToDoItem",
@@ -4350,6 +4302,54 @@
         {
           "title": "Error-Response:",
           "content": "\n  {\n    \"msg\": \"Request not found.\",\n    \"errors\": {\n        \"msg\": \"Invalid Lead ID provided.\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/main.php",
+    "groupTitle": "Items_ThingsToDo"
+  },
+  {
+    "type": "DELETE",
+    "url": "/items/sightseeings/:requestId/:Id",
+    "title": "view an existing Sightseeing",
+    "version": "0.1.0",
+    "name": "DeleteThingsToDoItem",
+    "group": "Items_ThingsToDo",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "requestId",
+            "description": "<p>lead Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "Id",
+            "description": "<p>sightseeing Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Response-Example:",
+          "content": "\n {\n    \"RequestsThingstodo\": {\n        \"id\": \"306\",\n        \"request_id\": \"4572\",\n        \"thingstodo_id\": \"3\",\n        \"day\": \"7\",\n        \"start_time\": null,\n        \"end_time\": null,\n        \"price\": null,\n        \"currency_id\": null,\n        \"notes\": null,\n        \"guide_id\": null,\n        \"leader_id\": null,\n        \"date\": \"2010-02-20\",\n        \"pax\": null,\n        \"is_option\": null,\n        \"added_by\": \"51\",\n        \"cost_currency_id\": null,\n        \"cost_value\": null,\n        \"acc_journal_id\": null,\n        \"created\": null,\n        \"added_by_guide_id\": null,\n        \"contract_rate\": null,\n        \"contract_currency_id\": null,\n        \"parent_id\": null,\n        \"is_trip\": false,\n        \"tour_type\": null,\n        \"external_agency_id\": null,\n        \"guide_language_id\": null,\n        \"reservation_status_id\": \"1\",\n        \"pickup_location\": null,\n        \"dropoff_location\": null,\n        \"option_payment_method\": null\n    },\n    \"AddedBy\": {\n        \"name\": \"Amna Wasly\"\n    },\n    \"Thingstodo\": {\n        \"name\": \"Salah El Din / Mohamed Ali Citadel\"\n    },\n    \"Currency\": {\n        \"abbrev\": null\n    },\n    \"RequestsTodosCategory\": [\n        {\n            \"id\": \"1\",\n            \"requests_thingstodo_id\": \"306\",\n            \"thingstodos_category_id\": null,\n            \"qty\": \"1\"\n        }\n    ],\n    \"msg\": \"Data found successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n \"msg\": \"Data not found\",\n \"errors\": [\n     \"Id not found.\"\n   ]\n }",
           "type": "json"
         }
       ]
@@ -5686,39 +5686,6 @@
     "groupTitle": "Lead"
   },
   {
-    "type": "get",
-    "url": "/requests/files/:request_id",
-    "title": "List Lead's Files",
-    "version": "0.1.0",
-    "name": "ListFiles",
-    "group": "Lead",
-    "description": "<p>List of urls (files/attachments) attached to this lead.</p>",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "request_id",
-            "description": "<p>Mandatory REQUEST ID.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n \"files\": []\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/main.php",
-    "groupTitle": "Lead"
-  },
-  {
     "type": "post",
     "url": "/requests/files/:request_id",
     "title": "Delete Lead's Files",
@@ -5759,6 +5726,39 @@
         {
           "title": "Error-Response:",
           "content": "HTTP/1.1 400 Bad Request\n  {\n      \"msg\": \"Not all files were deleted.\",\n      \"failed\": [\n          \"user_files_uploads/Request/23/user_files_uploads\\\\Request\\\\23\\\\14642470_1269141953120551_1685851538751829764_n.jpg\"\n      ]\n  }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/main.php",
+    "groupTitle": "Lead"
+  },
+  {
+    "type": "get",
+    "url": "/requests/files/:request_id",
+    "title": "List Lead's Files",
+    "version": "0.1.0",
+    "name": "ListFiles",
+    "group": "Lead",
+    "description": "<p>List of urls (files/attachments) attached to this lead.</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "request_id",
+            "description": "<p>Mandatory REQUEST ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n \"files\": []\n}",
           "type": "json"
         }
       ]
@@ -7522,6 +7522,70 @@
     "groupTitle": "Payments"
   },
   {
+    "type": "get",
+    "url": "/permissions/job-title/:job_title_id",
+    "title": "List a JobTitle Permissions",
+    "name": "ListJobTitlePermissions",
+    "group": "Permissions",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "job_title_id",
+            "description": "<p>Mandatory JobTitle ID</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{   \"permissions\":\n    {\n        \"System\": {\n            \"_create\":\"1\",\n            \"_read\":\"1\",\n            \"_update\":\"1\",\n            \"_delete\":\"1\"\n        },\n        \"System Settings\": {\n            \"_read\":\"1\",\n            \"_create\":\"1\",\n            \"_update\":\"1\",\n            \"_delete\":\"1\"\n        }\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mohab.php",
+    "groupTitle": "Permissions"
+  },
+  {
+    "type": "get",
+    "url": "/permissions/users/:staff_id",
+    "title": "List a User/Staff Permissions",
+    "name": "ListStaffPermissions",
+    "group": "Permissions",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "staff_id",
+            "description": "<p>Mandatory User/Staff ID</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{   \"permissions\":\n    {\n        \"System\": {\n            \"_create\":\"1\",\n            \"_read\":\"1\",\n            \"_update\":\"1\",\n            \"_delete\":\"1\"\n        },\n        \"System Settings\": {\n            \"_read\":\"1\",\n            \"_create\":\"1\",\n            \"_update\":\"1\",\n            \"_delete\":\"1\"\n        }\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mohab.php",
+    "groupTitle": "Permissions"
+  },
+  {
     "type": "post",
     "url": "/permissions/management/:permission_title/:model/:permission_field",
     "title": "ManagePermission",
@@ -8570,6 +8634,57 @@
   },
   {
     "type": "get",
+    "url": "/requests/tasks/:request_id",
+    "title": "List Lead's Tasks",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "page",
+            "description": "<p>Optional Page number for pagination of results.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "request_id",
+            "description": "<p>Mandatory REQUEST ID.</p>"
+          }
+        ]
+      }
+    },
+    "name": "ListTasks",
+    "group": "Tasks",
+    "version": "0.1.0",
+    "description": "<p>Lists all tasks related to the signed in user.</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n  {\n    \"tasks\": [\n        {\n            \"SysTask\": {\n                \"id\": \"32\",\n                \"parent_id\": null,\n                \"staff_id\": \"1\",\n                \"created_by\": \"1\",\n                \"task_type\": \"1\",\n                \"model\": \"Request\",\n                \"model_key\": \"42\",\n                \"priority_id\": \"2\",\n                \"status_id\": \"2\",\n                \"subject\": \"Bakr 3ayz sho3lo\",\n                \"done_percentage\": null,\n                \"description\": \"bal7a task\",\n                \"due_date\": \"2017-10-18\",\n                \"started_on\": null,\n                \"completed_on\": null,\n                \"send_notification_email\": null,\n                \"watcher\": null,\n                \"created\": \"2018-02-27 17:53:59\",\n                \"modified\": \"2018-02-27 17:53:59\",\n                \"lft\": \"61\",\n                \"rght\": \"62\",\n                \"is_visible\": true,\n                \"task_type_id\": \"1\",\n                \"due_time\": null\n            },\n            \"Staff\": {\n                \"name\": \"Mohab Amr\"\n            },\n            \"CreatedBy\": {\n                \"id\": \"1\",\n                \"name\": \"Mohab Amr\"\n            },\n            \"TaskType\": {\n                \"id\": \"1\",\n                \"name\": \"Progress\",\n                \"is_visible\": true\n            },\n            \"status\": \"Deferred\"\n        }\n    ],\n    \"count\": 14,\n    \"current_page\": \"1\",\n    \"last_page\": 1,\n    \"limit\": 15\n}",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "tasks",
+            "description": "<p>Retrieved tasks and related entities from database.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "apidoc/mohab.php",
+    "groupTitle": "Tasks"
+  },
+  {
+    "type": "get",
     "url": "/tasks/",
     "title": "List All User's Tasks",
     "parameter": {
@@ -8617,57 +8732,6 @@
           "type": "json"
         }
       ]
-    },
-    "filename": "apidoc/mohab.php",
-    "groupTitle": "Tasks"
-  },
-  {
-    "type": "get",
-    "url": "/requests/tasks/:request_id",
-    "title": "List Lead's Tasks",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": true,
-            "field": "page",
-            "description": "<p>Optional Page number for pagination of results.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "request_id",
-            "description": "<p>Mandatory REQUEST ID.</p>"
-          }
-        ]
-      }
-    },
-    "name": "ListTasks",
-    "group": "Tasks",
-    "version": "0.1.0",
-    "description": "<p>Lists all tasks related to the signed in user.</p>",
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n  {\n    \"tasks\": [\n        {\n            \"SysTask\": {\n                \"id\": \"32\",\n                \"parent_id\": null,\n                \"staff_id\": \"1\",\n                \"created_by\": \"1\",\n                \"task_type\": \"1\",\n                \"model\": \"Request\",\n                \"model_key\": \"42\",\n                \"priority_id\": \"2\",\n                \"status_id\": \"2\",\n                \"subject\": \"Bakr 3ayz sho3lo\",\n                \"done_percentage\": null,\n                \"description\": \"bal7a task\",\n                \"due_date\": \"2017-10-18\",\n                \"started_on\": null,\n                \"completed_on\": null,\n                \"send_notification_email\": null,\n                \"watcher\": null,\n                \"created\": \"2018-02-27 17:53:59\",\n                \"modified\": \"2018-02-27 17:53:59\",\n                \"lft\": \"61\",\n                \"rght\": \"62\",\n                \"is_visible\": true,\n                \"task_type_id\": \"1\",\n                \"due_time\": null\n            },\n            \"Staff\": {\n                \"name\": \"Mohab Amr\"\n            },\n            \"CreatedBy\": {\n                \"id\": \"1\",\n                \"name\": \"Mohab Amr\"\n            },\n            \"TaskType\": {\n                \"id\": \"1\",\n                \"name\": \"Progress\",\n                \"is_visible\": true\n            },\n            \"status\": \"Deferred\"\n        }\n    ],\n    \"count\": 14,\n    \"current_page\": \"1\",\n    \"last_page\": 1,\n    \"limit\": 15\n}",
-          "type": "json"
-        }
-      ],
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object[]",
-            "optional": false,
-            "field": "tasks",
-            "description": "<p>Retrieved tasks and related entities from database.</p>"
-          }
-        ]
-      }
     },
     "filename": "apidoc/mohab.php",
     "groupTitle": "Tasks"
