@@ -285,7 +285,46 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "   HTTP/1.1 200 OK\n {\n \"Clients\": {\n     \"386\": \"Yasmi\",\n     \"8681\": \"Yas\"\n }\n}",
+          "content": "  HTTP/1.1 200 OK\n{\n\"clients\": [\n    {\n        \"id\": \"194\",\n        \"name\": \"Yara\",\n        \"email\": \"yara.yasser@yahoo.com\"\n    }\n ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "Clients"
+  },
+  {
+    "type": "get",
+    "url": "/clients/list",
+    "title": "List Organization Clients",
+    "name": "ListOrganizationClients",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "limit",
+            "description": "<p>Optional limit number default set to 1000</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "query",
+            "description": "<p>Optional query string for autocomplete</p>"
+          }
+        ]
+      }
+    },
+    "group": "Clients",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "  HTTP/1.1 200 OK\n   {\n     \"clients\": [\n          \"Client\": {\n          \"id\": \"318893\",\n          \"name\": \"yasmineOBx\",\n          \"email\": \"amin@deemalab.com\",\n          \"phone\": \"0113214135\",\n          \"country_id\": \"2\",\n          \"address\": \"Masrgg El Gedida\",\n          \"passport_no\": null,\n          \"passport_issue_date\": null,\n          \"passport_expiry_date\": null,\n          \"client_group_id\": null,\n          \"payment_terms\": null,\n          \"is_visible\": true,\n          \"tax_card_num\": null,\n          \"city_id\": null,\n          \"dob\": null,\n          \"crm_points\": \"0\",\n          \"is_corporate\": false,\n          \"mobile\": null,\n          \"created_by\": \"1\",\n          \"crm_organization_id\": \"1\"\n       },\n       \"createdBy\": {\n          \"id\": \"1\",\n          \"name\": \"Yasmine Alaa\",\n          \"dob\": \"1987-03-11\",\n          \"personal_phone\": \"0101508076\",\n          \"other_phone_numbers\": \"\",\n          \"work_phone_ext\": \"333 / 777\",\n          \"work_mail\": \"\",\n          \"system_mail\": \"\",\n          \"personal_mail\": \"yasmine@deemalab.com\",\n          \"address\": \"A1, New Awkaf Buildings, Hadayek El Koba, Cairo, Egypt\",\n          \"employment_date\": \"2003-02-01\",\n          \"last_login\": \"2012-01-05 13:17:21\",\n          \"created\": \"2009-07-10 19:13:53\",\n          \"modified\": \"2018-01-30 11:26:52\",\n          \"username\": \"yasmine\",\n          \"password\": \"0e2eb0a1b60e506603b94d486c263787f9c48eb1\",\n          \"branch_id\": \"1\",\n          \"active\": true,\n          \"is_visible\": true,\n          \"online\": true,\n          \"signature\": \"\",\n          \"assigned_requests\": \"0\",\n          \"manager_id\": \"3\",\n          \"time_sheet_id\": \"11\",\n          \"sheet_id\": null,\n          \"token_active\": \"2018-01-30 12:26:52\",\n          \"ws_token\": \">[gahB;gx&VE6g.sGVKWpEHWAwCJ$4O1\",\n          \"last_password_changed\": \"2016-08-16 10:25:17\",\n          \"company_id\": \"1\",\n          \"force_password_change\": false,\n          \"push_bullet_token\": \"OmgiDhNIzyWOY8soD3hlRK3hE0SjmNjt\",\n          \"is_accessible\": true,\n          \"allow_ips\": null\n        },\n        \"Country\": {\n          \"name\": \"Afghanistan\"\n        },\n ],\n \"limit\": 50,\n \"count\": 17,\n \"current_page\": 1,\n \"last_page\": 1\n}",
           "type": "json"
         }
       ]
@@ -450,6 +489,277 @@ define({ "api": [
     },
     "filename": "apidoc/main.php",
     "groupTitle": "Clients"
+  },
+  {
+    "type": "post",
+    "url": "closure-reasons/lead-reason-submission/:lead_id",
+    "title": "Create Lead Closure Reason",
+    "version": "0.1.0",
+    "name": "CreateLeadClosureReason",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "lead_id",
+            "description": "<p>Mandatory Lead_id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": " {\n  \"Request\":{\n      \"closure_note\":\"yasmie0\",\n      \"closure_reason_id\" : 1\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "group": "ClosureReasons",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "   HTTP/1.1 200 Ok\n  {\n  \"Request\": {\n    \"id\": \"90\",\n    \"closure_note\": \"yasmie0\",\n    \"closure_reason_id\": \"1\"\n  },\n \"msg\": \"Succesfully save the requested reason!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "ClosureReasons"
+  },
+  {
+    "type": "post",
+    "url": "closure-reasons/main",
+    "title": "Create New Closure Reason",
+    "version": "0.1.0",
+    "name": "CreateNewClosureReason",
+    "group": "ClosureReasons",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n  \"ClosureReason\":{\n      \"title\":\"yasmine0\"\n  }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " HTTP/1.1 201 Created\n{\n  \"ClosureReason\": {\n      \"id\": \"19\",\n      \"title\": \"yasmie0\",\n      \"is_visible\": true\n  },\n  \"msg\": \"Successfully created the requested closure reason!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "  HTTP/1.1 400 Bad Request\n {\n  \"msg\": \"Failed to create the requested closure reason!\",\n  \"errors\": [\n    {\n      \"title\": [\n         \"This Title Already Exists!\"\n      ]\n     }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "ClosureReasons"
+  },
+  {
+    "type": "delete",
+    "url": "closure-reasons/main/:id",
+    "title": "Delete Closure Reasons",
+    "version": "0.1.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Mandatory Id</p>"
+          }
+        ]
+      }
+    },
+    "name": "DeleteClosureReasons",
+    "group": "ClosureReasons",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " HTTP/1.1 200 Ok\n{\n  \"msg\": \"Successfully deleted the requested closure reason!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "ClosureReasons"
+  },
+  {
+    "type": "get",
+    "url": "closure-reasons/main",
+    "title": "List All Closure Reasons",
+    "version": "0.1.0",
+    "name": "ListAllClosureReasons",
+    "group": "ClosureReasons",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "page",
+            "description": "<p>Optional Page number for pagination of results.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "   HTTP/1.1 200 Ok\n  {\n   \"msg\": \"Fetched Reasons!\",\n   \"count\": 12,\n   \"last_page\": 1,\n   \"current_page\": 1,\n   \"closure_reasons\": [\n     {\n       \"id\": \"1\",\n       \"title\": \"yasmine0\",\n       \"is_visible\": true\n     }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "ClosureReasons"
+  },
+  {
+    "type": "get",
+    "url": "closure-reasons/list",
+    "title": "List Closure Reasons",
+    "version": "0.1.0",
+    "name": "ListClosureReasons",
+    "group": "ClosureReasons",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "  HTTP/1.1 200 Ok\n {\n \"ClosureReasons\": {\n   \"1\": \"yasmine0\",\n   \"3\": \"Competition and Prices\",\n },\n \"msg\": \"Fetched Closure Reasons!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "ClosureReasons"
+  },
+  {
+    "type": "put",
+    "url": "closure-reasons/main/:id",
+    "title": "Update Closure Reason",
+    "version": "0.1.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Mandatory Id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n  \"ClosureReason\":{\n      \"title\":\"yasmine\"\n  }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "name": "UpdateClosureReason",
+    "group": "ClosureReasons",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " HTTP/1.1 200 Ok\n{\n  \"ClosureReason\": {\n      \"id\": \"19\",\n      \"title\": \"yasmie0\",\n      \"is_visible\": true\n  },\n  \"msg\": \"Successfully updated the requested closure reason!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "  HTTP/1.1 400 Bad Request\n {\n  \"msg\": \"Failed to update the requested closure reason!\",\n  \"errors\": [\n    {\n      \"title\": [\n         \"This Title Already Exists!\"\n      ]\n     }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "ClosureReasons"
+  },
+  {
+    "type": "get",
+    "url": "closure-reasons/main/:id",
+    "title": "View Closure Reason",
+    "version": "0.1.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Mandatory Id</p>"
+          }
+        ]
+      }
+    },
+    "name": "ViewClosureReason",
+    "group": "ClosureReasons",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " HTTP/1.1 200 Ok\n{\n  \"ClosureReason\": {\n      \"id\": \"19\",\n      \"title\": \"yasmie0\",\n      \"is_visible\": true\n  },\n  \"msg\": \"Fetched Closure Reason!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "ClosureReasons"
+  },
+  {
+    "type": "get",
+    "url": "closure-reasons/lead-reason-list/:lead_id",
+    "title": "get Lead Closure Reason",
+    "version": "0.1.0",
+    "name": "getLeadClosureReason",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "lead_id",
+            "description": "<p>Mandatory Lead_id</p>"
+          }
+        ]
+      }
+    },
+    "group": "ClosureReasons",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 Ok\n{\n  \"Request\": {\n      \"id\": \"90\",\n      \"closure_note\": \"yasmie0\",\n      \"closure_reason_id\": \"1\"\n  },\n  \"ClosureReason\": {\n      \"title\": \"yasmine0\",\n      \"id\": \"1\"\n  },\n  \"msg\": \"Fetched Lead!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "ClosureReasons"
   },
   {
     "type": "put",
@@ -3643,45 +3953,6 @@ define({ "api": [
     "groupTitle": "Items_Hotels"
   },
   {
-    "type": "POST",
-    "url": "/items/meals/:requestId",
-    "title": "Create a new Meal",
-    "name": "CreateMeal",
-    "version": "0.1.0",
-    "group": "Items_Meals",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "requestId",
-            "description": "<p>lead Id</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Request-Example:",
-          "content": "{\n      \"RequestsMeal\":{\n               \"restaurant_id\": 6,\n               \"pax\":5,\n               \"city_id\":64,\n               \"extra_meal_type_id\":7,\n               \"price\" :2000,\n               \"currency_id\":1,\n               \"date\":\"2017-10-23\"\n   }\n }",
-          "type": "json"
-        }
-      ]
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "  HTTP/1.1 201 Created\n{\nRequestsMeal\": {\n            \"id\": \"33276\",\n            \"request_id\": \"1000\",\n            \"extra_meal_type_id\": \"7\",\n            \"city_id\": \"64\",\n            \"restaurant_id\": \"6\",\n            \"date\": \"2017-10-23\",\n            \"pax_num\": null,\n            \"notes\": null,\n            \"reservation_status_id\": \"1\",\n            \"created\": \"2018-02-19 12:59:11\",\n            \"pax\": \"4\",\n            \"is_option\": null,\n            \"added_by\": \"1\",\n            \"price\": \"2000.00\",\n            \"currency_id\": \"1\",\n            \"acc_journal_id\": null,\n            \"added_by_guide_id\": null,\n            \"contract_rate\": null,\n            \"contract_currency_id\": null,\n            \"cost_rate\": null,\n            \"cost_currency_id\": null,\n            \"parent_id\": null,\n            \"is_trip\": false,\n            \"option_payment_method\": null\n        },\n        \"Currency\": {\n            \"id\": \"1\",\n            \"currency\": \"Euro\",\n            \"abbrev\": \"EUR\",\n            \"symbol\": \"&#8364;\",\n            \"symbol_direction\": true,\n            \"is_visible\": true\n        },\n        \"Restaurant\": {\n            \"id\": \"6\",\n            \"name\": \"Pharoahs Resturant \",\n            \"address\": \"In the front Of Zoser Pyramids \",\n            \"phone\": null,\n            \"fax\": \"\",\n            \"email\": \"\",\n            \"restaurant_category_id\": \"2\",\n            \"city_id\": \"1\",\n            \"website\": \"\",\n            \"tax_card_num\": null,\n            \"payment_terms\": \"0\",\n            \"is_visible\": true,\n            \"contact_person\": null,\n            \"payment_information\": null\n        },\n        \"ExtraMealType\": {\n            \"id\": \"7\",\n            \"title\": \"Christmas Gala Dinner\",\n            \"duration\": null,\n            \"is_visible\": true\n        },\n        \"City\": {\n            \"id\": \"64\",\n            \"parent_id\": \"0\",\n            \"name\": \"Zürich\",\n            \"branch_id\": \"0\",\n            \"country_id\": \"207\",\n            \"is_visible\": true,\n            \"lat\": null,\n            \"lng\": null\n        }\n    },\n   \"msg\": \"Successfully Added New Extra Meal\"\n }",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/main.php",
-    "groupTitle": "Items_Meals"
-  },
-  {
     "type": "PUT",
     "url": "/items/meals/:requestId/:recordId",
     "title": "Edit a meal",
@@ -3730,6 +4001,45 @@ define({ "api": [
         {
           "title": "Error-Response:",
           "content": " HTTP/1.1 404 Not Found\n{\n\"msg\": \"Item not found.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/main.php",
+    "groupTitle": "Items_Meals"
+  },
+  {
+    "type": "POST",
+    "url": "/items/meals/:requestId",
+    "title": "Create a new Meal",
+    "name": "CreateMeal",
+    "version": "0.1.0",
+    "group": "Items_Meals",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "requestId",
+            "description": "<p>lead Id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n      \"RequestsMeal\":{\n               \"restaurant_id\": 6,\n               \"pax\":5,\n               \"city_id\":64,\n               \"extra_meal_type_id\":7,\n               \"price\" :2000,\n               \"currency_id\":1,\n               \"date\":\"2017-10-23\"\n   }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "  HTTP/1.1 201 Created\n{\nRequestsMeal\": {\n            \"id\": \"33276\",\n            \"request_id\": \"1000\",\n            \"extra_meal_type_id\": \"7\",\n            \"city_id\": \"64\",\n            \"restaurant_id\": \"6\",\n            \"date\": \"2017-10-23\",\n            \"pax_num\": null,\n            \"notes\": null,\n            \"reservation_status_id\": \"1\",\n            \"created\": \"2018-02-19 12:59:11\",\n            \"pax\": \"4\",\n            \"is_option\": null,\n            \"added_by\": \"1\",\n            \"price\": \"2000.00\",\n            \"currency_id\": \"1\",\n            \"acc_journal_id\": null,\n            \"added_by_guide_id\": null,\n            \"contract_rate\": null,\n            \"contract_currency_id\": null,\n            \"cost_rate\": null,\n            \"cost_currency_id\": null,\n            \"parent_id\": null,\n            \"is_trip\": false,\n            \"option_payment_method\": null\n        },\n        \"Currency\": {\n            \"id\": \"1\",\n            \"currency\": \"Euro\",\n            \"abbrev\": \"EUR\",\n            \"symbol\": \"&#8364;\",\n            \"symbol_direction\": true,\n            \"is_visible\": true\n        },\n        \"Restaurant\": {\n            \"id\": \"6\",\n            \"name\": \"Pharoahs Resturant \",\n            \"address\": \"In the front Of Zoser Pyramids \",\n            \"phone\": null,\n            \"fax\": \"\",\n            \"email\": \"\",\n            \"restaurant_category_id\": \"2\",\n            \"city_id\": \"1\",\n            \"website\": \"\",\n            \"tax_card_num\": null,\n            \"payment_terms\": \"0\",\n            \"is_visible\": true,\n            \"contact_person\": null,\n            \"payment_information\": null\n        },\n        \"ExtraMealType\": {\n            \"id\": \"7\",\n            \"title\": \"Christmas Gala Dinner\",\n            \"duration\": null,\n            \"is_visible\": true\n        },\n        \"City\": {\n            \"id\": \"64\",\n            \"parent_id\": \"0\",\n            \"name\": \"Zürich\",\n            \"branch_id\": \"0\",\n            \"country_id\": \"207\",\n            \"is_visible\": true,\n            \"lat\": null,\n            \"lng\": null\n        }\n    },\n   \"msg\": \"Successfully Added New Extra Meal\"\n }",
           "type": "json"
         }
       ]
@@ -3954,54 +4264,6 @@ define({ "api": [
   {
     "type": "DELETE",
     "url": "/items/sightseeings/:requestId/:Id",
-    "title": "Delete an existing Sightseeing",
-    "version": "0.1.0",
-    "name": "DeleteThingsToDoItem",
-    "group": "Items_ThingsToDo",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "requestId",
-            "description": "<p>lead Id</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "Id",
-            "description": "<p>sightseeing Id</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Response-Example:",
-          "content": "{\n  \"msg\": \"element on file was successfully deleted\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "\n  {\n    \"msg\": \"Request not found.\",\n    \"errors\": {\n        \"msg\": \"Invalid Lead ID provided.\"\n    }\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/main.php",
-    "groupTitle": "Items_ThingsToDo"
-  },
-  {
-    "type": "DELETE",
-    "url": "/items/sightseeings/:requestId/:Id",
     "title": "view an existing Sightseeing",
     "version": "0.1.0",
     "name": "DeleteThingsToDoItem",
@@ -4040,6 +4302,54 @@ define({ "api": [
         {
           "title": "Error-Response:",
           "content": "{\n \"msg\": \"Data not found\",\n \"errors\": [\n     \"Id not found.\"\n   ]\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/main.php",
+    "groupTitle": "Items_ThingsToDo"
+  },
+  {
+    "type": "DELETE",
+    "url": "/items/sightseeings/:requestId/:Id",
+    "title": "Delete an existing Sightseeing",
+    "version": "0.1.0",
+    "name": "DeleteThingsToDoItem",
+    "group": "Items_ThingsToDo",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "requestId",
+            "description": "<p>lead Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "Id",
+            "description": "<p>sightseeing Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Response-Example:",
+          "content": "{\n  \"msg\": \"element on file was successfully deleted\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n  {\n    \"msg\": \"Request not found.\",\n    \"errors\": {\n        \"msg\": \"Invalid Lead ID provided.\"\n    }\n}",
           "type": "json"
         }
       ]
@@ -4929,8 +5239,13 @@ define({ "api": [
     "parameter": {
       "examples": [
         {
-          "title": "Request-Example:",
-          "content": " {\n    \"Client\": {\n        \"name\": \"Mohab 12\",\n        \"email\": \"mohabamro@gmail.com\",\n        \"id\": 306899,\n        \"crm_organization_id\": 10\n    },\n    \"Request\": {\n        \"notes\": \"no notes yet\",\n        \"department_id\": 1,\n        \"subject\": \"Lead title\",\n        \"num_of_adults\" : \"2\",\n        \"num_of_children\" : \"2\",\n        \"price\":4000,\n        \"currency_id\":3\n        \"arrival_date\": \"2017-12-19\",\n        \"departure_date\": \"2018-11-20\"\n    }\n}",
+          "title": "Lead-Example:",
+          "content": " {\n    \"Client\": {\n        \"name\": \"Mohab 12\",\n        \"email\": \"mohabamro@gmail.com\",\n        \"crm_organization_id\": 10\n    },\n    \"Request\": {\n        \"notes\": \"no notes yet\",\n        \"department_id\": 1,\n        \"subject\": \"Lead title\",\n        \"num_of_adults\" : \"2\",\n        \"num_of_children\" : \"2\",\n        \"price\":4000,\n        \"currency_id\":3\n        \"arrival_date\": \"2017-12-19\",\n        \"departure_date\": \"2018-11-20\"\n    }\n}",
+          "type": "json"
+        },
+        {
+          "title": "Contact-Example:",
+          "content": " {\n    \"Client\": {\n        \"id\": 306899\n    },\n    \"Request\": {\n        \"notes\": \"no notes yet\",\n        \"department_id\": 1,\n        \"subject\": \"Lead title\",\n        \"num_of_adults\" : \"2\",\n        \"num_of_children\" : \"2\",\n        \"price\":4000,\n        \"currency_id\":3\n        \"arrival_date\": \"2017-12-19\",\n        \"departure_date\": \"2018-11-20\"\n    }\n}",
           "type": "json"
         }
       ]
@@ -5500,14 +5815,15 @@ define({ "api": [
         "Parameter": [
           {
             "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "request_id",
-            "description": "<p>Request unique ID</p>"
+            "type": "String",
+            "optional": true,
+            "field": "role",
+            "description": "<p>Optional flag, possible values: [admin, staff]</p>"
           }
         ]
       }
     },
+    "description": "<p>The role query is optional to view all leads (if admin) or my leads only</p>",
     "name": "ListLeadsPipeline",
     "group": "Lead",
     "success": {
@@ -5636,6 +5952,219 @@ define({ "api": [
     },
     "filename": "apidoc/main.php",
     "groupTitle": "Lead"
+  },
+  {
+    "type": "POST",
+    "url": "/templates/mail",
+    "title": "Add New MailTemplate",
+    "name": "CreateTemplateMail",
+    "group": "MailTemplate",
+    "version": "0.1.0",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Request-Example:  ",
+          "content": "\n{ \n  \"Template\":\n   {\n    \"title\":\"new email\",\n    \"template_txt\":\"hello its me\"\n  }",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 Ok\n {\n     \"msg\": \"Created template\",\n     \"Template\": {\n         \"id\": \"1\",\n         \"staff_id\": \"1\",\n         \"title\": \"new email\",\n         \"template_txt\": \"hello its me\",\n         \"is_global\": true,\n         \"is_visible\": true\n     }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-Response:",
+          "content": "  HTTP/1.1 400 Bad Request\n{\n     \"errors\": {\n         \"title\": [\n             \"The template must have a unique title.\"\n         ],\n         \"template_txt\": [\n             \"The template must have a body.\"\n         ]\n     },\n     \"msg\": \"Bad params.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
+    "groupTitle": "MailTemplate"
+  },
+  {
+    "type": "DELETE",
+    "url": "/templates/mail/:id",
+    "title": "Delete MailTemplate",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>template Id</p>"
+          }
+        ]
+      }
+    },
+    "name": "DeleteTemplateMail",
+    "group": "MailTemplate",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200 O \n{\n    \"msg\": \"The mail template has been deleted.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-Response:",
+          "content": "  HTTP/1.1 400 Bad Request\n{\n   \"msg\": \"This Mail Template Does not exist\",\n   \"errors\": {\n       \"msg\": \"Invalid  Mail Template ID provided.\"\n   }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
+    "groupTitle": "MailTemplate"
+  },
+  {
+    "type": "PUT",
+    "url": "/templates/mail/:id",
+    "title": "Edit MailTemplate",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>template Id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "  {\n     \"Template\":\n    { \n     \"title\":\"new email\",\n     \"template_txt\":\"hello\"\n   }  \n  }  \n\n{",
+          "type": "json"
+        }
+      ]
+    },
+    "name": "EditTemplateMail",
+    "group": "MailTemplate",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200 Ok\n    \"msg\": \"Updated template.\",\n    \"Template\": {\n       \"id\": \"1\",\n       \"staff_id\": \"1\",\n       \"title\": \"new email\",\n       \"template_txt\": \"hello\",\n       \"is_global\": true,\n       \"is_visible\": true\n   }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-Response:",
+          "content": "HTTP/1.1 400 Bad Request\n{\n   \"errors\": {\n       \"template_txt\": [\n           \"The template must have a body.\"\n       ]\n   },\n   \"msg\": \"Bad params.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
+    "groupTitle": "MailTemplate"
+  },
+  {
+    "type": "GET",
+    "url": "/templates/mail",
+    "title": "List MailTemplate",
+    "name": "TemplateMailIndex",
+    "group": "MailTemplate",
+    "version": "0.1.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "role",
+            "description": "<p>Optional role could be admin.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "page",
+            "description": "<p>Optional (pagination) page number.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "boolean",
+            "optional": true,
+            "field": "global",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200 Ok\n{\n     \"msg\": \"Retrieved templates.\",\n     \"templates\": [\n         {\n             \"id\": \"2\",\n             \"staff_id\": \"1\",\n             \"title\": \"new emails\",\n             \"template_txt\": \"hello again\",\n             \"is_global\": true,\n             \"is_visible\": true\n         },\n         {\n             \"id\": \"1\",\n             \"staff_id\": \"1\",\n             \"title\": \"new email\",\n             \"template_txt\": \"hello its me\",\n             \"is_global\": true,\n             \"is_visible\": true\n         }\n     ]\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
+    "groupTitle": "MailTemplate"
+  },
+  {
+    "type": "GET",
+    "url": "/templates/mail/:id",
+    "title": "View MailTemplate",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>template Id</p>"
+          }
+        ]
+      }
+    },
+    "name": "ViewTemplateMail",
+    "group": "MailTemplate",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200 Ok\n{\n   \"MailTemplate\": {\n       \"id\": \"1\",\n       \"staff_id\": \"1\",\n       \"title\": \"new email\",\n       \"template_txt\": \"hello its moi\",\n       \"is_global\": true,\n       \"is_visible\": true\n   }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-Response:",
+          "content": "HTTP/1.1 400 Bad Request\n{\n    \"msg\": \"This Mail Template Does not exist\",\n    \"errors\": {\n        \"msg\": \"Invalid  Mail Template ID provided.\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
+    "groupTitle": "MailTemplate"
   },
   {
     "type": "post",
@@ -6993,6 +7522,68 @@ define({ "api": [
     "groupTitle": "Payments"
   },
   {
+    "type": "post",
+    "url": "/permissions/management/:permission_title/:model/:permission_field",
+    "title": "ManagePermission",
+    "name": "ManagePermission",
+    "group": "Permissions",
+    "version": "0.1.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "permission_title",
+            "description": "<p>Mandatory permission_title</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "boolean",
+            "optional": false,
+            "field": "allow",
+            "description": "<p>Mandatory allow Param</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "model",
+            "description": "<p>Mandatory model param could be Staff or JobTitle</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "permission_field",
+            "description": "<p>Mandatory permission_field could be read, update, delete, create</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 Ok\n {\n  {\n  \"Make single call\": {\n      \"_create\": \"-1\",\n      \"_read\": \"-1\",\n      \"_update\": \"1\",\n      \"_delete\": \"-1\"\n  },\n  \"msg\": \"Successfully allowed the update permission\"\n}\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "  HTTP/1.1 404 Not Found\n {\n  \"msg\": \"Permission not found.\",\n  \"errors\": {\n      \"msg\": \"Invalid Permission ID provided.\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "Permissions"
+  },
+  {
     "type": "PUT",
     "url": "/requests/edit-department/:request_id",
     "title": "",
@@ -7979,57 +8570,6 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/requests/tasks/:request_id",
-    "title": "List Lead's Tasks",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": true,
-            "field": "page",
-            "description": "<p>Optional Page number for pagination of results.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "request_id",
-            "description": "<p>Mandatory REQUEST ID.</p>"
-          }
-        ]
-      }
-    },
-    "name": "ListTasks",
-    "group": "Tasks",
-    "version": "0.1.0",
-    "description": "<p>Lists all tasks related to the signed in user.</p>",
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n  {\n    \"tasks\": [\n        {\n            \"SysTask\": {\n                \"id\": \"32\",\n                \"parent_id\": null,\n                \"staff_id\": \"1\",\n                \"created_by\": \"1\",\n                \"task_type\": \"1\",\n                \"model\": \"Request\",\n                \"model_key\": \"42\",\n                \"priority_id\": \"2\",\n                \"status_id\": \"2\",\n                \"subject\": \"Bakr 3ayz sho3lo\",\n                \"done_percentage\": null,\n                \"description\": \"bal7a task\",\n                \"due_date\": \"2017-10-18\",\n                \"started_on\": null,\n                \"completed_on\": null,\n                \"send_notification_email\": null,\n                \"watcher\": null,\n                \"created\": \"2018-02-27 17:53:59\",\n                \"modified\": \"2018-02-27 17:53:59\",\n                \"lft\": \"61\",\n                \"rght\": \"62\",\n                \"is_visible\": true,\n                \"task_type_id\": \"1\",\n                \"due_time\": null\n            },\n            \"Staff\": {\n                \"name\": \"Mohab Amr\"\n            },\n            \"CreatedBy\": {\n                \"id\": \"1\",\n                \"name\": \"Mohab Amr\"\n            },\n            \"TaskType\": {\n                \"id\": \"1\",\n                \"name\": \"Progress\",\n                \"is_visible\": true\n            },\n            \"status\": \"Deferred\"\n        }\n    ],\n    \"count\": 14,\n    \"current_page\": \"1\",\n    \"last_page\": 1,\n    \"limit\": 15\n}",
-          "type": "json"
-        }
-      ],
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object[]",
-            "optional": false,
-            "field": "tasks",
-            "description": "<p>Retrieved tasks and related entities from database.</p>"
-          }
-        ]
-      }
-    },
-    "filename": "apidoc/mohab.php",
-    "groupTitle": "Tasks"
-  },
-  {
-    "type": "get",
     "url": "/tasks/",
     "title": "List All User's Tasks",
     "parameter": {
@@ -8077,6 +8617,57 @@ define({ "api": [
           "type": "json"
         }
       ]
+    },
+    "filename": "apidoc/mohab.php",
+    "groupTitle": "Tasks"
+  },
+  {
+    "type": "get",
+    "url": "/requests/tasks/:request_id",
+    "title": "List Lead's Tasks",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "page",
+            "description": "<p>Optional Page number for pagination of results.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "request_id",
+            "description": "<p>Mandatory REQUEST ID.</p>"
+          }
+        ]
+      }
+    },
+    "name": "ListTasks",
+    "group": "Tasks",
+    "version": "0.1.0",
+    "description": "<p>Lists all tasks related to the signed in user.</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n  {\n    \"tasks\": [\n        {\n            \"SysTask\": {\n                \"id\": \"32\",\n                \"parent_id\": null,\n                \"staff_id\": \"1\",\n                \"created_by\": \"1\",\n                \"task_type\": \"1\",\n                \"model\": \"Request\",\n                \"model_key\": \"42\",\n                \"priority_id\": \"2\",\n                \"status_id\": \"2\",\n                \"subject\": \"Bakr 3ayz sho3lo\",\n                \"done_percentage\": null,\n                \"description\": \"bal7a task\",\n                \"due_date\": \"2017-10-18\",\n                \"started_on\": null,\n                \"completed_on\": null,\n                \"send_notification_email\": null,\n                \"watcher\": null,\n                \"created\": \"2018-02-27 17:53:59\",\n                \"modified\": \"2018-02-27 17:53:59\",\n                \"lft\": \"61\",\n                \"rght\": \"62\",\n                \"is_visible\": true,\n                \"task_type_id\": \"1\",\n                \"due_time\": null\n            },\n            \"Staff\": {\n                \"name\": \"Mohab Amr\"\n            },\n            \"CreatedBy\": {\n                \"id\": \"1\",\n                \"name\": \"Mohab Amr\"\n            },\n            \"TaskType\": {\n                \"id\": \"1\",\n                \"name\": \"Progress\",\n                \"is_visible\": true\n            },\n            \"status\": \"Deferred\"\n        }\n    ],\n    \"count\": 14,\n    \"current_page\": \"1\",\n    \"last_page\": 1,\n    \"limit\": 15\n}",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "tasks",
+            "description": "<p>Retrieved tasks and related entities from database.</p>"
+          }
+        ]
+      }
     },
     "filename": "apidoc/mohab.php",
     "groupTitle": "Tasks"
