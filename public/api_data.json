@@ -108,6 +108,45 @@
     "groupTitle": "Clients"
   },
   {
+    "type": "put",
+    "url": "/clients/customer-status/:client_id/:flag",
+    "title": "Customer Status",
+    "version": "0.1.0",
+    "name": "CustomerStatus",
+    "group": "Clients",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "client_id",
+            "description": "<p>Mandatory ClientID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "flag",
+            "description": "<p>Mandatory vALUES [1 for Customer , 0 for Lead]</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "  HTTP/1.1 200 OK\n {\n  \"msg\": \"Successfully updated the customer status!\",\n  \"Client\": {\n      \"id\": \"318888\",\n      \"name\": \"yasmine alaa eldin\",\n      \"email\": \"yasmine@deemalab.com\",\n      \"phone\": \"\",\n      \"country_id\": \"64\",\n      \"address\": null,\n      \"passport_no\": null,\n      \"passport_issue_date\": null,\n      \"passport_expiry_date\": null,\n      \"client_group_id\": null,\n      \"payment_terms\": null,\n      \"is_visible\": true,\n      \"tax_card_num\": null,\n      \"city_id\": null,\n      \"dob\": null,\n      \"crm_points\": \"0\",\n      \"is_corporate\": false,\n      \"mobile\": null,\n      \"created_by\": null,\n      \"crm_organization_id\": null,\n     \"is_customer\": true\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "Clients"
+  },
+  {
     "type": "delete",
     "url": "/clients/main/:id",
     "title": "Delete Client",
@@ -286,45 +325,6 @@
         {
           "title": "Success-Response:",
           "content": "  HTTP/1.1 200 OK\n{\n\"clients\": [\n    {\n        \"id\": \"194\",\n        \"name\": \"Yara\",\n        \"email\": \"yara.yasser@yahoo.com\"\n    }\n ]\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/yasmine.php",
-    "groupTitle": "Clients"
-  },
-  {
-    "type": "get",
-    "url": "/clients/list",
-    "title": "List Organization Clients",
-    "name": "ListOrganizationClients",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": true,
-            "field": "limit",
-            "description": "<p>Optional limit number default set to 1000</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": true,
-            "field": "query",
-            "description": "<p>Optional query string for autocomplete</p>"
-          }
-        ]
-      }
-    },
-    "group": "Clients",
-    "version": "0.1.0",
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "  HTTP/1.1 200 OK\n   {\n     \"clients\": [\n          \"Client\": {\n          \"id\": \"318893\",\n          \"name\": \"yasmineOBx\",\n          \"email\": \"amin@deemalab.com\",\n          \"phone\": \"0113214135\",\n          \"country_id\": \"2\",\n          \"address\": \"Masrgg El Gedida\",\n          \"passport_no\": null,\n          \"passport_issue_date\": null,\n          \"passport_expiry_date\": null,\n          \"client_group_id\": null,\n          \"payment_terms\": null,\n          \"is_visible\": true,\n          \"tax_card_num\": null,\n          \"city_id\": null,\n          \"dob\": null,\n          \"crm_points\": \"0\",\n          \"is_corporate\": false,\n          \"mobile\": null,\n          \"created_by\": \"1\",\n          \"crm_organization_id\": \"1\"\n       },\n       \"createdBy\": {\n          \"id\": \"1\",\n          \"name\": \"Yasmine Alaa\",\n          \"dob\": \"1987-03-11\",\n          \"personal_phone\": \"0101508076\",\n          \"other_phone_numbers\": \"\",\n          \"work_phone_ext\": \"333 / 777\",\n          \"work_mail\": \"\",\n          \"system_mail\": \"\",\n          \"personal_mail\": \"yasmine@deemalab.com\",\n          \"address\": \"A1, New Awkaf Buildings, Hadayek El Koba, Cairo, Egypt\",\n          \"employment_date\": \"2003-02-01\",\n          \"last_login\": \"2012-01-05 13:17:21\",\n          \"created\": \"2009-07-10 19:13:53\",\n          \"modified\": \"2018-01-30 11:26:52\",\n          \"username\": \"yasmine\",\n          \"password\": \"0e2eb0a1b60e506603b94d486c263787f9c48eb1\",\n          \"branch_id\": \"1\",\n          \"active\": true,\n          \"is_visible\": true,\n          \"online\": true,\n          \"signature\": \"\",\n          \"assigned_requests\": \"0\",\n          \"manager_id\": \"3\",\n          \"time_sheet_id\": \"11\",\n          \"sheet_id\": null,\n          \"token_active\": \"2018-01-30 12:26:52\",\n          \"ws_token\": \">[gahB;gx&VE6g.sGVKWpEHWAwCJ$4O1\",\n          \"last_password_changed\": \"2016-08-16 10:25:17\",\n          \"company_id\": \"1\",\n          \"force_password_change\": false,\n          \"push_bullet_token\": \"OmgiDhNIzyWOY8soD3hlRK3hE0SjmNjt\",\n          \"is_accessible\": true,\n          \"allow_ips\": null\n        },\n        \"Country\": {\n          \"name\": \"Afghanistan\"\n        },\n ],\n \"limit\": 50,\n \"count\": 17,\n \"current_page\": 1,\n \"last_page\": 1\n}",
           "type": "json"
         }
       ]
@@ -882,25 +882,6 @@
   {
     "type": "get",
     "url": "countries/all",
-    "title": "Countries List",
-    "name": "CountriesList",
-    "group": "Countries",
-    "version": "0.1.0",
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "   HTTP/1.1 200 Ok\n{\n \"Countries\": {\n     \"1\": \"United States\",\n     \"2\": \"Afghanistan\",\n  }\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/yasmine.php",
-    "groupTitle": "Countries"
-  },
-  {
-    "type": "get",
-    "url": "countries/all",
     "title": "List Countries",
     "name": "ListCountries",
     "parameter": {
@@ -912,6 +893,20 @@
             "optional": true,
             "field": "page",
             "description": "<p>Optional Page number for pagination of results.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "limit",
+            "description": "<p>Optional limit number default set to 200</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "query",
+            "description": "<p>Optional Query Param for Search countries</p>"
           }
         ]
       }
@@ -1493,6 +1488,43 @@
         {
           "title": "Error-Response:",
           "content": " HTTP/1.1 400 Bad Request\n {\n \"msg\": \"record not found.\",\n \"errors\": [\n   {\n      \"msg\": \"Invalid Record ID provided.\"\n   }\n ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "Departments"
+  },
+  {
+    "type": "post",
+    "url": "/settings/departments/delete-bulk",
+    "title": "Delete Bulk Departments",
+    "name": "DeleteBulkDepartments",
+    "group": "Departments",
+    "version": "0.1.0",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n  \"departments\": [\n     1,\n     3,\n     4\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "   HTTP/1.1 200 OK\n{\n \"msg\": \"All departments successfully deleted.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "  HTTP/1.1 400 Bad Request\n{\n  \"msg\": \"Some departments were not deleted, check errors array.\",\n  \"errors\": [\n      {\n          \"department_id\": 555,\n          \"msg\": \"This department doesn't exist.\"\n      }\n  ]\n}",
           "type": "json"
         }
       ]
@@ -4296,54 +4328,6 @@
   {
     "type": "DELETE",
     "url": "/items/sightseeings/:requestId/:Id",
-    "title": "view an existing Sightseeing",
-    "version": "0.1.0",
-    "name": "DeleteThingsToDoItem",
-    "group": "Items_ThingsToDo",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "requestId",
-            "description": "<p>lead Id</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "Id",
-            "description": "<p>sightseeing Id</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Response-Example:",
-          "content": "\n {\n    \"RequestsThingstodo\": {\n        \"id\": \"306\",\n        \"request_id\": \"4572\",\n        \"thingstodo_id\": \"3\",\n        \"day\": \"7\",\n        \"start_time\": null,\n        \"end_time\": null,\n        \"price\": null,\n        \"currency_id\": null,\n        \"notes\": null,\n        \"guide_id\": null,\n        \"leader_id\": null,\n        \"date\": \"2010-02-20\",\n        \"pax\": null,\n        \"is_option\": null,\n        \"added_by\": \"51\",\n        \"cost_currency_id\": null,\n        \"cost_value\": null,\n        \"acc_journal_id\": null,\n        \"created\": null,\n        \"added_by_guide_id\": null,\n        \"contract_rate\": null,\n        \"contract_currency_id\": null,\n        \"parent_id\": null,\n        \"is_trip\": false,\n        \"tour_type\": null,\n        \"external_agency_id\": null,\n        \"guide_language_id\": null,\n        \"reservation_status_id\": \"1\",\n        \"pickup_location\": null,\n        \"dropoff_location\": null,\n        \"option_payment_method\": null\n    },\n    \"AddedBy\": {\n        \"name\": \"Amna Wasly\"\n    },\n    \"Thingstodo\": {\n        \"name\": \"Salah El Din / Mohamed Ali Citadel\"\n    },\n    \"Currency\": {\n        \"abbrev\": null\n    },\n    \"RequestsTodosCategory\": [\n        {\n            \"id\": \"1\",\n            \"requests_thingstodo_id\": \"306\",\n            \"thingstodos_category_id\": null,\n            \"qty\": \"1\"\n        }\n    ],\n    \"msg\": \"Data found successfully\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "{\n \"msg\": \"Data not found\",\n \"errors\": [\n     \"Id not found.\"\n   ]\n }",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/main.php",
-    "groupTitle": "Items_ThingsToDo"
-  },
-  {
-    "type": "DELETE",
-    "url": "/items/sightseeings/:requestId/:Id",
     "title": "Delete an existing Sightseeing",
     "version": "0.1.0",
     "name": "DeleteThingsToDoItem",
@@ -4382,6 +4366,54 @@
         {
           "title": "Error-Response:",
           "content": "\n  {\n    \"msg\": \"Request not found.\",\n    \"errors\": {\n        \"msg\": \"Invalid Lead ID provided.\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/main.php",
+    "groupTitle": "Items_ThingsToDo"
+  },
+  {
+    "type": "DELETE",
+    "url": "/items/sightseeings/:requestId/:Id",
+    "title": "view an existing Sightseeing",
+    "version": "0.1.0",
+    "name": "DeleteThingsToDoItem",
+    "group": "Items_ThingsToDo",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "requestId",
+            "description": "<p>lead Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "Id",
+            "description": "<p>sightseeing Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Response-Example:",
+          "content": "\n {\n    \"RequestsThingstodo\": {\n        \"id\": \"306\",\n        \"request_id\": \"4572\",\n        \"thingstodo_id\": \"3\",\n        \"day\": \"7\",\n        \"start_time\": null,\n        \"end_time\": null,\n        \"price\": null,\n        \"currency_id\": null,\n        \"notes\": null,\n        \"guide_id\": null,\n        \"leader_id\": null,\n        \"date\": \"2010-02-20\",\n        \"pax\": null,\n        \"is_option\": null,\n        \"added_by\": \"51\",\n        \"cost_currency_id\": null,\n        \"cost_value\": null,\n        \"acc_journal_id\": null,\n        \"created\": null,\n        \"added_by_guide_id\": null,\n        \"contract_rate\": null,\n        \"contract_currency_id\": null,\n        \"parent_id\": null,\n        \"is_trip\": false,\n        \"tour_type\": null,\n        \"external_agency_id\": null,\n        \"guide_language_id\": null,\n        \"reservation_status_id\": \"1\",\n        \"pickup_location\": null,\n        \"dropoff_location\": null,\n        \"option_payment_method\": null\n    },\n    \"AddedBy\": {\n        \"name\": \"Amna Wasly\"\n    },\n    \"Thingstodo\": {\n        \"name\": \"Salah El Din / Mohamed Ali Citadel\"\n    },\n    \"Currency\": {\n        \"abbrev\": null\n    },\n    \"RequestsTodosCategory\": [\n        {\n            \"id\": \"1\",\n            \"requests_thingstodo_id\": \"306\",\n            \"thingstodos_category_id\": null,\n            \"qty\": \"1\"\n        }\n    ],\n    \"msg\": \"Data found successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n \"msg\": \"Data not found\",\n \"errors\": [\n     \"Id not found.\"\n   ]\n }",
           "type": "json"
         }
       ]
@@ -5223,6 +5255,43 @@
     "groupTitle": "JobTitles"
   },
   {
+    "type": "post",
+    "url": "/requests/convert",
+    "title": "Automatic Creating Leads",
+    "name": "AutomaticCreatingLeads",
+    "group": "Lead",
+    "version": "0.1.0",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"requests\": [\n        {\n            \"email\":\"yasmine@deemalab.com\",\n            \"subject\":\"hello\",\n            \"text\":\"yas\"\n       },\n       {\n         \"email\":\"yasmine.alaa59@gmail.com\",\n         \"subject\":\"hello2\",\n         \"text\":\"yas2\"\n       }\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "   HTTP/1.1 200 OK\n{\n \"errors\": [],\n \"msg\": \"All leads successfully created.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "  HTTP/1.1 400 Bad Request\n{\n  \"errors\": [\n      {\n          \"msg\": \"Failed to create client\",\n         \"email\": \"yasmie@deemalab.com\",\n         \"errors\": {\n            \"name\": [\n               \"Client name is required\"\n            ]\n          }\n      }\n  ],\n  \"msg\": \"Some leads were not created, check errors array.\"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "Lead"
+  },
+  {
     "type": "put",
     "url": "/requests/department/:request_id/:department_id",
     "title": "Change lead department",
@@ -5397,6 +5466,61 @@
       }
     },
     "filename": "apidoc/main.php",
+    "groupTitle": "Lead"
+  },
+  {
+    "type": "POST",
+    "url": "/requests/files/:RequestId",
+    "title": "Delete Files",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "RequestId",
+            "description": "<p>Request Id .</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "delete",
+            "description": "<p>Mandatory should equal 1.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n\t\"files\" : [ \"1//National-Motors-Egypt-20247-1476624662.png\" ,\n                \"1//National-Motors-Egypt-20247-14323232.png\" ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "name": "DeleteFiles",
+    "group": "Lead",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200 \n{\n    \"msg\": \"All files were deleted successfully.\",\n    \"deleted\": [\n        \"user_files_uploads/Request/1/National-Motors-Egypt-20247-1476624662.png\"\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-Response:",
+          "content": " HTTP/1.1 400 \n  {\n    \"msg\": \"Not all files were deleted.\",\n    \"deleted\": [\n        \"user_files_uploads/Request/1/National-Motors-Egypt-20247-1476624662.png\"\n    ],\n    \"errors\": [\n        \"user_files_uploads/Request/1/National-Motors-Egypt-20247-14762222222.png\"\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
     "groupTitle": "Lead"
   },
   {
@@ -5795,6 +5919,13 @@
           },
           {
             "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "term",
+            "description": "<p>Optional for term search</p>"
+          },
+          {
+            "group": "Parameter",
             "type": "Number",
             "optional": true,
             "field": "page",
@@ -5814,6 +5945,39 @@
       ]
     },
     "filename": "apidoc/mokhtar.php",
+    "groupTitle": "Lead"
+  },
+  {
+    "type": "get",
+    "url": "/requests/files/:request_id",
+    "title": "List Lead's Files",
+    "version": "0.1.0",
+    "name": "ListFiles",
+    "group": "Lead",
+    "description": "<p>List of urls (files/attachments) attached to this lead.</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "request_id",
+            "description": "<p>Mandatory REQUEST ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n \"files\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/main.php",
     "groupTitle": "Lead"
   },
   {
@@ -5857,39 +6021,6 @@
         {
           "title": "Error-Response:",
           "content": "HTTP/1.1 400 Bad Request\n  {\n      \"msg\": \"Not all files were deleted.\",\n      \"failed\": [\n          \"user_files_uploads/Request/23/user_files_uploads\\\\Request\\\\23\\\\14642470_1269141953120551_1685851538751829764_n.jpg\"\n      ]\n  }",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/main.php",
-    "groupTitle": "Lead"
-  },
-  {
-    "type": "get",
-    "url": "/requests/files/:request_id",
-    "title": "List Lead's Files",
-    "version": "0.1.0",
-    "name": "ListFiles",
-    "group": "Lead",
-    "description": "<p>List of urls (files/attachments) attached to this lead.</p>",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "request_id",
-            "description": "<p>Mandatory REQUEST ID.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n \"files\": []\n}",
           "type": "json"
         }
       ]
@@ -5970,6 +6101,54 @@
     "groupTitle": "Lead"
   },
   {
+    "type": "PUT",
+    "url": "/requests/migrate/:old_stage_id/:new_stage_id",
+    "title": "Migrate Requests from Stage",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "old_stage_id",
+            "description": "<p>Mandatory Deleted Status  Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "new_stage_id",
+            "description": "<p>Mandatory Migrated Status Id</p>"
+          }
+        ]
+      }
+    },
+    "name": "MigrateRequests",
+    "group": "Lead",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200 \n{\n   \"msg\": \"migrated all requests\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n    \"msg\": \"Stage not found.\",\n    \"errors\": {\n        \"msg\": \"Invalid Stage ID provided.\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
+    "groupTitle": "Lead"
+  },
+  {
     "type": "get",
     "url": "/requests/search",
     "title": "Search Leads",
@@ -5995,6 +6174,13 @@
           },
           {
             "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "grouped",
+            "description": "<p>Optional param = 1 for grouped leads by status.</p>"
+          },
+          {
+            "group": "Parameter",
             "type": "Boolean",
             "optional": true,
             "field": "manager",
@@ -6008,6 +6194,11 @@
         {
           "title": "Success-Response:",
           "content": "HTTP/1.1 200 OK\n{\n    \"msg\": \"Retrieved leads.\",\n    \"requests\": [\n        {\n            \"Request\": {\n                \"subject\": \"Edited Lead title\",\n                \"id\": \"23\",\n                \"arrival_date\": \"2017-12-19\",\n                \"departure_date\": \"2018-11-20\",\n                \"num_of_adults\": \"2\",\n                \"num_of_children\": \"2\",\n                \"confirmed\": true,\n                \"staff_id\": \"1\",\n                \"delegated_to\": null,\n                \"created\": \"2017-10-15 22:42:40\"\n            },\n            \"Staff\": {\n                \"name\": \"Mohab Amr\",\n                \"id\": \"1\"\n            },\n            \"Delegate\": {\n                \"name\": null,\n                \"id\": null\n            },\n            \"RequestStatus\": {\n                \"title\": \"Deleted\",\n                \"id\": \"8\"\n            },\n            \"Client\": {\n                \"name\": \"Mohab 343\",\n                \"is_corporate\": true,\n                \"email\": \"mohabamro@gmail.com\"\n            },\n            \"Currency\": {\n                \"currency\": \"Egyptian Pounds\",\n                \"abbrev\": \"EGP\"\n            }\n        }\n    ],\n   \"count\": 40,\n   \"current_page\": 1,\n   \"limit\": 50,\n   \"last_page\": 1\n}",
+          "type": "json"
+        },
+        {
+          "title": "grouped-leads-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n\n\"requests\": [\n    {\n        \"Requests\": [\n            {\n              \"Request\": {\n                 \"subject\": \"weee\",\n                 \"id\": \"332521\",\n                 \"arrival_date\": null,\n                 \"departure_date\": null,\n                 \"num_of_adults\": null,\n                 \"num_of_children\": null,\n                 \"confirmed\": null,\n                 \"staff_id\": \"1\",\n                 \"delegated_to\": null,\n                 \"created\": \"2018-04-02 16:18:21\"\n              },\n             \"Staff\": {\n                \"name\": \"yasee\",\n                \"id\": \"1\"\n              },\n             \"Delegate\": {\n                \"name\": null,\n                \"id\": null\n             },\n             \"RequestStatus\": {\n                \"title\": \"New Request\",\n                \"id\": \"6\"\n             },\n            \"Client\": {\n                \"name\": \"yasmine.alaa59\",\n                \"is_corporate\": false,\n                \"email\": \"yasmine.alaa59@gmail.com\"\n            },\n           \"Currency\": {\n                \"currency\": null,\n                \"abbrev\": null\n            }\n      }\n    ],\n    \"Status\": {\n            \"title\": \"Pending Reminder\",\n            \"id\": \"3\"\n        }\n    }\n   ]\n    \"msg\": \"Retrieved leads.\",\n    \"current_page\": 1,\n    \"limit\": 50,\n    \"last_page\": 3\n}",
           "type": "json"
         }
       ]
@@ -6043,6 +6234,88 @@
       ]
     },
     "filename": "apidoc/main.php",
+    "groupTitle": "Lead"
+  },
+  {
+    "type": "POST",
+    "url": "/requests/files/:RequestId",
+    "title": "Upload New File",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "RequestId",
+            "description": "<p>Request Id .</p>"
+          }
+        ]
+      }
+    },
+    "name": "UploadFile",
+    "group": "Lead",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200 \n    \"msg\": \"All files were uploaded successfully.\",\n    \"result\": {\n        \"success\": true,\n        \"files\": {\n            \"file\": {\n                \"url\": \"user_files_uploads/Request/1/National-Motors-Egypt-20247-1476624662.png\"\n            }\n        }\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-Response:",
+          "content": " HTTP/1.1 404 \n{\n    \"msg\": \"Request not found.\",\n    \"errors\": {\n        \"msg\": \"Invalid Request ID provided.\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
+    "groupTitle": "Lead"
+  },
+  {
+    "type": "GET",
+    "url": "/requests/files/:RequestId",
+    "title": "View Files",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "RequestId",
+            "description": "<p>Request Id .</p>"
+          }
+        ]
+      }
+    },
+    "name": "ViewFiles",
+    "group": "Lead",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200 \n{\n     \"files\": [\n         \"user_files_uploads\\\\Request\\\\1\\\\National-Motors-Egypt-20247-1476624662.png\"\n     ]\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-Response:",
+          "content": " HTTP/1.1 404 \n{\n    \"msg\": \"Request not found.\",\n    \"errors\": {\n        \"msg\": \"Invalid Lead ID provided.\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
     "groupTitle": "Lead"
   },
   {
@@ -6083,6 +6356,270 @@
     },
     "filename": "apidoc/main.php",
     "groupTitle": "Lead"
+  },
+  {
+    "type": "POST",
+    "url": "/lists/main/:id",
+    "title": "Add Members",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>List Id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n  \"members\": [\n  \t\n  \"1\",\"3\",\"2\"\n  \n                        \n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "name": "AddMembers",
+    "group": "ListsController",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200 \n{\n    \"msg\": \"Added all members\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
+    "groupTitle": "ListsController"
+  },
+  {
+    "type": "POST",
+    "url": "/lists/main",
+    "title": "Create New List",
+    "name": "CreateList",
+    "group": "ListsController",
+    "version": "0.1.0",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": " {\n   \"List\": {\n       \"title\": \"new list\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200\n{\n    \"msg\": \"Created list.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-Response:",
+          "content": "HTTP/1.1 400\n {\n   \"errors\": {\n       \"title\": [\n           \"Title Can't be empty !\"\n       ]\n   },\n   \"msg\": \"Bad params.\"\n  }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
+    "groupTitle": "ListsController"
+  },
+  {
+    "type": "DELETE",
+    "url": "/lists/main/:id",
+    "title": "Delete List",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>List Id</p>"
+          }
+        ]
+      }
+    },
+    "name": "DeleteList",
+    "group": "ListsController",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200 \n {\n   \"msg\": \"Deleted list.\"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
+    "groupTitle": "ListsController"
+  },
+  {
+    "type": "DELETE",
+    "url": "/lists/delete/:id",
+    "title": "Delete Members",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>List Id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"members\": [\n    \t\n    \"1\",\"2\",\"-2\"\n                          \n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "name": "DeleteMembers",
+    "group": "ListsController",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200 \n{\n    \"msg\": \"Deleted memebers from list.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-Response:",
+          "content": " HTTP/1.1 404\n{\n    \"msg\": \"List not found\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
+    "groupTitle": "ListsController"
+  },
+  {
+    "type": "POST",
+    "url": "/lists/main/:id/:templateId",
+    "title": "Send Email",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>List Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "templateId",
+            "description": "<p>template Id</p>"
+          }
+        ]
+      }
+    },
+    "name": "SendEmail",
+    "group": "ListsController",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200 \n{\n  \"msg\": \"Sent template\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-Response:",
+          "content": "HTTP/1.1 404\n{\n \"msg\": \"Template not found.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
+    "groupTitle": "ListsController"
+  },
+  {
+    "type": "GET",
+    "url": "/lists/main/:id",
+    "title": "View List",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>List Id</p>"
+          }
+        ]
+      }
+    },
+    "name": "ViewList",
+    "group": "ListsController",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200 \n{\n   \"msg\": \"Retrieved list with clients.\",\n   \"list\": {\n       \"id\": \"3\",\n       \"title\": \"armin\",\n       \"members\": [\n           {\n               \"id\": \"2\",\n               \"name\": \"Carmen Sandoval\",\n               \"email\": \"telber_sl@hotmail.com\",\n               \"phone\": null,\n               \"dob\": null,\n               \"mobile\": null,\n               \"crm_points\": \"0\"\n           },\n           {\n               \"id\": \"3\",\n               \"name\": \"\",\n               \"email\": \"vikoulah@gmail.com\",\n               \"phone\": null,\n               \"dob\": null,\n               \"mobile\": null,\n               \"crm_points\": \"0\"\n           }\n       ]\n   }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-Response:",
+          "content": " HTTP/1.1 400\n\n{\n   \"msg\": \"This Id Does not Exist\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
+    "groupTitle": "ListsController"
+  },
+  {
+    "type": "GET",
+    "url": "/lists/main",
+    "title": "View All Lists",
+    "name": "ViewLists",
+    "group": "ListsController",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200 \n{\n   \"msg\": \"All lists\",\n   \"response\": {\n       \"lists\": [\n           {\n               \"id\": \"5\",\n               \"title\": \"wait for you\"\n           },\n           {\n               \"id\": \"4\",\n               \"title\": \"hiii\"\n           },\n           {\n               \"id\": \"3\",\n               \"title\": \"armin\"\n           }\n       ],\n       \"last_page\": 1,\n       \"count\": 3,\n       \"current_page\": 1\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
+    "groupTitle": "ListsController"
   },
   {
     "type": "POST",
@@ -7145,6 +7682,47 @@
     "name": "GetRequestsNotesRequest_id"
   },
   {
+    "type": "DELETE",
+    "url": "/organizations/:id",
+    "title": "Delete Organization",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Organization Id</p>"
+          }
+        ]
+      }
+    },
+    "name": "DeleteOrganization",
+    "group": "Organization",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 Ok\n   {\n   \"msg\": \"Organization successfully deleted\"\n   }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n    \"msg\": \"organization not found.\",\n    \"errors\": {\n        \"msg\": \"Invalid organization ID provided.\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
+    "groupTitle": "Organization"
+  },
+  {
     "type": "POST",
     "url": "/organizations",
     "title": "Create New Organization",
@@ -7363,6 +7941,52 @@
       ]
     },
     "filename": "apidoc/main.php",
+    "groupTitle": "Organizations"
+  },
+  {
+    "type": "get",
+    "url": "/organizations/list-clients/:id",
+    "title": "List Organization Clients",
+    "name": "ListOrganizationClients",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Mandatory organizationId</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "limit",
+            "description": "<p>Optional limit number default set to 1000</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "page",
+            "description": "<p>Optional Page number for pagination of results.</p>"
+          }
+        ]
+      }
+    },
+    "group": "Organizations",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "  HTTP/1.1 200 OK\n   {\n     \"clients\": [\n          \"Client\": {\n          \"id\": \"318893\",\n          \"name\": \"yasmineOBx\",\n          \"email\": \"amin@deemalab.com\",\n          \"phone\": \"0113214135\",\n          \"country_id\": \"2\",\n          \"address\": \"Masrgg El Gedida\",\n          \"passport_no\": null,\n          \"passport_issue_date\": null,\n          \"passport_expiry_date\": null,\n          \"client_group_id\": null,\n          \"payment_terms\": null,\n          \"is_visible\": true,\n          \"tax_card_num\": null,\n          \"city_id\": null,\n          \"dob\": null,\n          \"crm_points\": \"0\",\n          \"is_corporate\": false,\n          \"mobile\": null,\n          \"created_by\": \"1\",\n          \"crm_organization_id\": \"1\"\n       },\n       \"createdBy\": {\n          \"id\": \"1\",\n          \"name\": \"Yasmine Alaa\",\n          \"dob\": \"1987-03-11\",\n          \"personal_phone\": \"0101508076\",\n          \"other_phone_numbers\": \"\",\n          \"work_phone_ext\": \"333 / 777\",\n          \"work_mail\": \"\",\n          \"system_mail\": \"\",\n          \"personal_mail\": \"yasmine@deemalab.com\",\n          \"address\": \"A1, New Awkaf Buildings, Hadayek El Koba, Cairo, Egypt\",\n          \"employment_date\": \"2003-02-01\",\n          \"last_login\": \"2012-01-05 13:17:21\",\n          \"created\": \"2009-07-10 19:13:53\",\n          \"modified\": \"2018-01-30 11:26:52\",\n          \"username\": \"yasmine\",\n          \"password\": \"0e2eb0a1b60e506603b94d486c263787f9c48eb1\",\n          \"branch_id\": \"1\",\n          \"active\": true,\n          \"is_visible\": true,\n          \"online\": true,\n          \"signature\": \"\",\n          \"assigned_requests\": \"0\",\n          \"manager_id\": \"3\",\n          \"time_sheet_id\": \"11\",\n          \"sheet_id\": null,\n          \"token_active\": \"2018-01-30 12:26:52\",\n          \"ws_token\": \">[gahB;gx&VE6g.sGVKWpEHWAwCJ$4O1\",\n          \"last_password_changed\": \"2016-08-16 10:25:17\",\n          \"company_id\": \"1\",\n          \"force_password_change\": false,\n          \"push_bullet_token\": \"OmgiDhNIzyWOY8soD3hlRK3hE0SjmNjt\",\n          \"is_accessible\": true,\n          \"allow_ips\": null\n        },\n        \"Country\": {\n          \"name\": \"Afghanistan\"\n        },\n ],\n \"limit\": 50,\n \"count\": 17,\n \"current_page\": 1,\n \"last_page\": 1\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
     "groupTitle": "Organizations"
   },
   {
@@ -7779,62 +8403,6 @@
       ]
     },
     "filename": "apidoc/mohab.php",
-    "groupTitle": "Permissions"
-  },
-  {
-    "type": "post",
-    "url": "/permissions/job-title/:id",
-    "title": "ManageJobPermission",
-    "name": "ManageJobPermission",
-    "group": "Permissions",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "id",
-            "description": "<p>Mandatory job_title_id</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "boolean",
-            "optional": false,
-            "field": "allow",
-            "description": "<p>Mandatory allow Param</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Request-Example:",
-          "content": " {\n \"Permission\": {\n    \"title\": \"System Settings\",\n    \"action\": \"create\"\n }\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "description": "<p>The action key could be create, update , read , delete</p>",
-    "version": "0.1.0",
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "    HTTP/1.1 200 Ok\n {\n  {\n  \"Make single call\": {\n      \"_create\": \"-1\",\n      \"_read\": \"-1\",\n      \"_update\": \"1\",\n      \"_delete\": \"-1\"\n  },\n  \"msg\": \"Successfully allowed the update permission\"\n}\n }",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "  HTTP/1.1 404 Not Found\n {\n  \"msg\": \"Permission not found.\",\n  \"errors\": {\n      \"msg\": \"Invalid Permission ID provided.\"\n  }\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/yasmine.php",
     "groupTitle": "Permissions"
   },
   {
@@ -8735,7 +9303,7 @@
     "title": "Update System Configs",
     "name": "UpdateSystemConfigs",
     "group": "SysConfigs",
-    "description": "<p>name key could be &quot;timezone, currency,&quot;</p>",
+    "description": "<p>name key could be &quot;timezone, currency, country, timeformat, dateformat, markettype&quot;</p>",
     "version": "0.1.0",
     "parameter": {
       "examples": [
@@ -9149,7 +9717,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"tasks\": [\n        {\n            \"SysTask\": {\n                \"id\": \"32\",\n                \"parent_id\": null,\n                \"staff_id\": \"1\",\n                \"created_by\": \"1\",\n                \"task_type\": \"1\",\n                \"model\": \"Request\",\n                \"model_key\": \"42\",\n                \"priority_id\": \"2\",\n                \"status_id\": \"2\",\n                \"subject\": \"Bakr 3ayz sho3lo\",\n                \"done_percentage\": null,\n                \"description\": \"bal7a task\",\n                \"due_date\": \"2017-10-18\",\n                \"started_on\": null,\n                \"completed_on\": null,\n                \"send_notification_email\": null,\n                \"watcher\": null,\n                \"created\": \"2018-02-27 17:53:59\",\n                \"modified\": \"2018-02-27 17:53:59\",\n                \"lft\": \"61\",\n                \"rght\": \"62\",\n                \"is_visible\": true,\n                \"task_type_id\": \"1\",\n                \"due_time\": null\n            },\n            \"Staff\": {\n                \"id\": \"1\",\n                \"name\": \"Mohab Amr\",\n                \"dob\": \"1987-03-11\",\n                \"personal_phone\": \"0110828725\",\n                \"other_phone_numbers\": \"\",\n                \"work_phone_ext\": \"333 / 777\",\n                \"work_mail\": \"ayman@memphistours.com\",\n                \"system_mail\": \"mte@memphistours.com\",\n                \"personal_mail\": \"aymanrb@gmail.com\",\n                \"address\": \"A1, New Awkaf Buildings, Hadayek El Koba, Cairo, Egypt\",\n                \"employment_date\": \"2003-02-01\",\n                \"last_login\": \"2012-01-05 13:17:21\",\n                \"created\": \"2009-07-10 19:13:53\",\n                \"modified\": \"2017-12-03 12:24:26\",\n                \"username\": \"mohab\",\n                \"branch_id\": \"1\",\n                \"active\": true,\n                \"is_visible\": true,\n                \"online\": true\n            },\n            \"TaskType\": {\n                \"id\": \"1\",\n                \"name\": \"Progress\",\n                \"is_visible\": true\n            },\n            \"Status\": \"Deferred\"\n        }\n    ],\n    \"msg\": \"Retrieved tasks on that day.\",\n    \"count\": 16,\n    \"current_page\": 1,\n    \"limit\": 15,\n    \"last_page\": 2\n}",
+          "content": "  HTTP/1.1 200 OK\n  {\n   \"tasks\": [\n       {\n           \"SysTask\": {\n               \"id\": \"5\",\n               \"parent_id\": null,\n               \"staff_id\": \"1\",\n               \"created_by\": \"1\",\n               \"task_type\": \"1\",\n               \"model\": \"Request\",\n               \"model_key\": \"332165\",\n               \"priority_id\": \"1\",\n               \"status_id\": \"1\",\n               \"subject\": \"run\",\n               \"done_percentage\": null,\n               \"description\": null,\n               \"due_date\": \"2018-03-27\",\n               \"started_on\": null,\n               \"completed_on\": null,\n               \"send_notification_email\": null,\n               \"watcher\": null,\n               \"created\": \"2018-03-06 13:43:41\",\n               \"modified\": \"2018-03-06 13:44:14\",\n               \"lft\": \"9\",\n               \"rght\": \"10\",\n               \"is_visible\": false,\n               \"task_type_id\": \"1\",\n               \"due_time\": null\n           },\n           \"Staff\": {\n               \"name\": \"Ayman Bedair\"\n           },\n           \"CreatedBy\": {\n               \"id\": \"1\",\n               \"name\": \"Ayman Bedair\"\n           },\n           \"Request\": {\n               \"id\": \"332165\",\n               \"client_id\": \"318821\",\n               \"Client\": {\n                   \"id\": \"318821\",\n                   \"name\": \"Client with phone number: 16148868339\",\n                   \"email\": null\n               }\n           },\n           \"TaskType\": {\n               \"id\": \"1\",\n               \"name\": \"type edited\",\n               \"is_visible\": false\n           }\n       }\n   ],\n   \"msg\": \"Retrieved tasks on that day.\",\n   \"count\": 7,\n   \"current_page\": 1,\n   \"last_page\": 1,\n     \"limit\": 15\n}",
           "type": "json"
         }
       ],
@@ -9193,7 +9761,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n  {\n    \"tasks\": [\n        {\n            \"SysTask\": {\n                \"id\": \"32\",\n                \"parent_id\": null,\n                \"staff_id\": \"1\",\n                \"created_by\": \"1\",\n                \"task_type\": \"1\",\n                \"model\": \"Request\",\n                \"model_key\": \"42\",\n                \"priority_id\": \"2\",\n                \"status_id\": \"2\",\n                \"subject\": \"Bakr 3ayz sho3lo\",\n                \"done_percentage\": null,\n                \"description\": \"bal7a task\",\n                \"due_date\": \"2017-10-18\",\n                \"started_on\": null,\n                \"completed_on\": null,\n                \"send_notification_email\": null,\n                \"watcher\": null,\n                \"created\": \"2018-02-27 17:53:59\",\n                \"modified\": \"2018-02-27 17:53:59\",\n                \"lft\": \"61\",\n                \"rght\": \"62\",\n                \"is_visible\": true,\n                \"task_type_id\": \"1\",\n                \"due_time\": null\n            },\n            \"Staff\": {\n                \"name\": \"Mohab Amr\"\n            },\n            \"CreatedBy\": {\n                \"id\": \"1\",\n                \"name\": \"Mohab Amr\"\n            },\n            \"TaskType\": {\n                \"id\": \"1\",\n                \"name\": \"Progress\",\n                \"is_visible\": true\n            },\n            \"status\": \"Deferred\"\n        }\n    ],\n    \"count\": 14,\n    \"current_page\": \"1\",\n    \"last_page\": 1,\n    \"limit\": 15\n}",
+          "content": "HTTP/1.1 200 OK\n  {\n    \"tasks\": [\n        {\n            \"SysTask\": {\n                \"id\": \"32\",\n                \"parent_id\": null,\n                \"staff_id\": \"1\",\n                \"created_by\": \"1\",\n                \"task_type\": \"1\",\n                \"model\": \"Request\",\n                \"model_key\": \"42\",\n                \"priority_id\": \"2\",\n                \"status_id\": \"2\",\n                \"subject\": \"Bakr 3ayz sho3lo\",\n                \"done_percentage\": null,\n                \"description\": \"bal7a task\",\n                \"due_date\": \"2017-10-18\",\n                \"started_on\": null,\n                \"completed_on\": null,\n                \"send_notification_email\": null,\n                \"watcher\": null,\n                \"created\": \"2018-02-27 17:53:59\",\n                \"modified\": \"2018-02-27 17:53:59\",\n                \"lft\": \"61\",\n                \"rght\": \"62\",\n                \"is_visible\": true,\n                \"task_type_id\": \"1\",\n                \"due_time\": null\n            },\n            \"Staff\": {\n                \"name\": \"Mohab Amr\"\n            },\n            \"CreatedBy\": {\n                \"id\": \"1\",\n                \"name\": \"Mohab Amr\"\n            },\n            \"Request\": {\n                \"id\": \"332165\",\n                \"client_id\": \"318821\",\n                \"Client\": {\n                    \"id\": \"318821\",\n                    \"name\": \"Client with phone number: 16148868339\",\n                    \"email\": null\n                }\n            },\n            \"TaskType\": {\n                \"id\": \"1\",\n                \"name\": \"Progress\",\n                \"is_visible\": true\n            },\n            \"status\": \"Deferred\"\n        }\n    ],\n    \"msg\": \"Retrieved tasks.\",\n    \"count\": 14,\n    \"current_page\": \"1\",\n    \"last_page\": 1,\n    \"limit\": 15\n}",
           "type": "json"
         }
       ],
@@ -9271,6 +9839,54 @@
     },
     "filename": "apidoc/mohab.php",
     "groupTitle": "Tasks"
+  },
+  {
+    "type": "POST",
+    "url": "/api_auth/sign_up_invitation/:code",
+    "title": "SignUp New User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "code",
+            "description": "<p>Mandatory Code for invitation .</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n\t \"Staff\": {\n\t \t\"name\": \"Mohamed Maged\",\n\t \t\"dob\": \"1996-11-18\",\n\t \t\"password\": \"ghostrider\",\n\t \t\"personal_email\": \"megzz@gmail.com\",\n\t \t\"username\": \"megz_1\",\n\t \t\"address\": \"Makrm ebid, Nasr City\",\n\t \t\"personal_phone\": \"012973187\"\n\t }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "name": "UserSignUpViaInvitationLink",
+    "group": "User",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200 \n{\n     \"msg\": \"Signed up successfully.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-Response:",
+          "content": " HTTP/1.1 404 Not Found\n{\n  \"msg\": \"You are not invited to join the system.\",\n  \"errors\": {\n      \"msg\": \"Your key is invalid.\"\n  }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
+    "groupTitle": "User"
   },
   {
     "type": "get",
@@ -9375,7 +9991,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"StaffProfile\": {\n        \"staff_id\": \"1\",\n        \"gender\": \"Male\",\n        \"ssn\": \"28703110100457\",\n        \"nationality_id\": null,\n        \"marital_status\": null,\n        \"military_status\": null,\n        \"blood_type\": null,\n        \"smoker\": null,\n        \"manager_id\": \"3\",\n        \"employment_status\": null,\n        \"address_2\": \"\",\n        \"city\": null,\n        \"country_id\": null,\n        \"zipcode\": null,\n        \"home_phone\": \"0222584643\",\n        \"medical_insurance\": false,\n        \"medical_insurance_company\": null,\n        \"medical_insurance_start_date\": null,\n        \"medical_insurance_end_date\": null,\n        \"medical_insurance_tags\": null,\n        \"skills_tags\": \"\",\n        \"salary_amount\": null,\n        \"salary_currency_id\": null,\n        \"salary_payment_frequency\": null,\n        \"salary_comments\": null\n    },\n    \"Staff\": {\n        \"id\": \"1\",\n        \"name\": \"Mohab Amr\",\n        \"dob\": \"1987-03-11\",\n        \"personal_phone\": \"0110828725\",\n        \"personal_mail\": \"aymanrb@gmail.com\",\n        \"address\": \"New Awkaff Buildings, Hadayek El Koba, Cairo, Egypt\",\n        \"employment_date\": \"2003-02-01\",\n        \"image\": \"/permFiles/images/Staff/original/1.jpg\"\n    },\n    \"msg\": \"Data Successfully updated\"\n}",
+          "content": " HTTP/1.1 200 OK\n {\n     \"StaffProfile\": {\n         \"staff_id\": \"1\",\n         \"gender\": \"Male\",\n         \"ssn\": \"28703110100457\",\n         \"nationality_id\": null,\n         \"marital_status\": null,\n         \"military_status\": null,\n         \"blood_type\": null,\n         \"smoker\": null,\n         \"manager_id\": \"3\",\n         \"employment_status\": null,\n         \"address_2\": \"\",\n         \"city\": null,\n         \"country_id\": null,\n         \"zipcode\": null,\n         \"home_phone\": \"0222584643\",\n         \"medical_insurance\": false,\n         \"medical_insurance_company\": null,\n         \"medical_insurance_start_date\": null,\n         \"medical_insurance_end_date\": null,\n         \"medical_insurance_tags\": null,\n         \"skills_tags\": \"\",\n         \"salary_amount\": null,\n         \"salary_currency_id\": null,\n         \"salary_payment_frequency\": null,\n         \"salary_comments\": null\n     },\n     \"Staff\": {\n         \"id\": \"1\",\n         \"name\": \"Mohab Amr\",\n         \"dob\": \"1987-03-11\",\n         \"personal_phone\": \"0110828725\",\n         \"personal_mail\": \"aymanrb@gmail.com\",\n         \"address\": \"New Awkaff Buildings, Hadayek El Koba, Cairo, Egypt\",\n         \"employment_date\": \"2003-02-01\",\n         \"image\": \"/permFiles/images/Staff/original/1.jpg\"\n     },\n    \"Info\": {\n      \"NumOfWon\": 2,\n      \"NumOfLost\": 0,\n      \"NumOfCancelled\": 0,\n      \"prices\": [\n          {\n              \"abbrev\": \"USD\",\n              \"netValue\": \"200.00\"\n          },\n          {\n              \"abbrev\": \"EUR\",\n              \"netValue\": \"300.00\"\n          }\n      ],\n      \"total\": 2\n  },\n  \"msg\": \"Data Successfully updated\"\n}",
           "type": "json"
         }
       ]
@@ -9404,6 +10020,45 @@
         {
           "title": "Success-Response:",
           "content": "HTTP/1.1 200 OK\n{\n    \"StaffProfile\": {\n        \"staff_id\": \"1\",\n        \"gender\": \"Male\",\n        \"ssn\": \"28703110100457\",\n        \"nationality_id\": null,\n        \"marital_status\": null,\n        \"military_status\": null,\n        \"blood_type\": null,\n        \"smoker\": null,\n        \"manager_id\": \"3\",\n        \"employment_status\": null,\n        \"address_2\": \"\",\n        \"city\": null,\n        \"country_id\": null,\n        \"zipcode\": null,\n        \"home_phone\": \"0222584643\",\n        \"medical_insurance\": false,\n        \"medical_insurance_company\": null,\n        \"medical_insurance_start_date\": null,\n        \"medical_insurance_end_date\": null,\n        \"medical_insurance_tags\": null,\n        \"skills_tags\": \"\",\n        \"salary_amount\": null,\n        \"salary_currency_id\": null,\n        \"salary_payment_frequency\": null,\n        \"salary_comments\": null\n    },\n    \"Staff\": {\n        \"id\": \"1\",\n        \"name\": \"Mohab Amr\",\n        \"dob\": \"1987-03-11\",\n        \"personal_phone\": \"0110828725\",\n        \"personal_mail\": \"aymanrb@gmail.com\",\n        \"address\": \"New Awkaff Buildings, Hadayek El Koba, Cairo, Egypt\",\n        \"employment_date\": \"2003-02-01\",\n        \"image\": \"/permFiles/images/Staff/original/1.jpg\"\n    },\n    \"msg\": \"Data Successfully updated\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "Users"
+  },
+  {
+    "type": "put",
+    "url": "users/profile/:id",
+    "title": "Update User Profile",
+    "name": "UpdateUserProfile",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Mandatory user_id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "   {\n    \"Staff\":{\n         \"name\":\"yasee\",\n         \"dob\":\"\",\n         \"personal_phone\":\"\",\n         \"personal_mail\":\"\",\n         \"address\":\"\",\n         \"active\":\"1\",\n         \"employment_date\":\"\",\n         \"work_mail\":\"\",\n         \"work_direct_phone\":\"\",\n   },\n   \"StaffProfile\":{\n         \"other_name\":\"nn\\/\",\n         \"gender\":\"Female\",\n         \"ssn\":\"\",\n         \"marital_status\":\"MARRIED\",\n         \"military_status\":\"Exempted\",\n         \"blood_type\":\"A-\",\n         \"smoker\":\"0\",\n         \"home_phone\":\"\",\n         \"zipcode\":\"\",\n         \"address_2\":\"\",\n         \"salary_amount\":\"\"\n   },\n    \"JobTitle\":{\n         \"id\": 6\n    },\n\n   \"Department\":{\n       \"id\": 8\n    }\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "group": "Users",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"StaffProfile\": {\n        \"staff_id\": \"1\",\n        \"gender\": \"Male\",\n        \"ssn\": \"28703110100457\",\n        \"nationality_id\": null,\n        \"marital_status\": null,\n        \"military_status\": null,\n        \"blood_type\": null,\n        \"smoker\": null,\n        \"manager_id\": \"3\",\n        \"employment_status\": null,\n        \"address_2\": \"\",\n        \"city\": null,\n        \"country_id\": null,\n        \"zipcode\": null,\n        \"home_phone\": \"0222584643\",\n        \"medical_insurance\": false,\n        \"medical_insurance_company\": null,\n        \"medical_insurance_start_date\": null,\n        \"medical_insurance_end_date\": null,\n        \"medical_insurance_tags\": null,\n        \"skills_tags\": \"\",\n        \"salary_amount\": null,\n        \"salary_currency_id\": null,\n        \"salary_payment_frequency\": null,\n        \"salary_comments\": null\n    },\n    \"Staff\": {\n        \"id\": \"1\",\n        \"name\": \"Mohab Amr\",\n        \"dob\": \"1987-03-11\",\n        \"personal_phone\": \"0110828725\",\n        \"personal_mail\": \"aymanrb@gmail.com\",\n        \"address\": \"New Awkaff Buildings, Hadayek El Koba, Cairo, Egypt\",\n        \"employment_date\": \"2003-02-01\",\n        \"image\": \"/permFiles/images/Staff/original/1.jpg\",\n        \"DepartmentsStaff\": [\n          {\n            \"id\": \"2596\",\n            \"department_id\": \"2\",\n            \"staff_id\": \"1\"\n          }\n         ],\n        \"JobTitle\": [\n          {\n            \"id\": \"35\",\n            \"title\": \"Super Sys Admin\",\n            \"job_description\": \"\",\n            \"is_visible\": true,\n            \"JobTitlesStaff\": {\n                \"id\": \"1566\",\n                \"job_title_id\": \"35\",\n                \"staff_id\": \"1\"\n            }\n          }\n        ],\n        \"image\": \"/permFiles/images/Staff/original/1.jpg\"\n      },\n    \"msg\": \"Data Successfully updated\"\n}",
           "type": "json"
         }
       ]
@@ -9532,7 +10187,7 @@
       "examples": [
         {
           "title": "Success-Response:zz",
-          "content": "HTTP/1.1 200 OK\n{\n    \"StaffProfile\": {\n        \"staff_id\": \"1\",\n        \"gender\": \"Male\",\n        \"ssn\": \"28703110100457\",\n        \"nationality_id\": null,\n        \"marital_status\": null,\n        \"military_status\": null,\n        \"blood_type\": null,\n        \"smoker\": null,\n        \"manager_id\": \"3\",\n        \"employment_status\": null,\n        \"address_2\": \"\",\n        \"city\": null,\n        \"country_id\": null,\n        \"zipcode\": null,\n        \"home_phone\": \"0222584643\",\n        \"medical_insurance\": false,\n        \"medical_insurance_company\": null,\n        \"medical_insurance_start_date\": null,\n        \"medical_insurance_end_date\": null,\n        \"medical_insurance_tags\": null,\n        \"skills_tags\": \"\",\n        \"salary_amount\": null,\n        \"salary_currency_id\": null,\n        \"salary_payment_frequency\": null,\n        \"salary_comments\": null\n    },\n    \"Staff\": {\n        \"id\": \"1\",\n        \"name\": \"Mohab Amr\",\n        \"dob\": \"1987-03-11\",\n        \"personal_phone\": \"0110828725\",\n        \"personal_mail\": \"aymanrb@gmail.com\",\n        \"address\": \"New Awkaff Buildings, Hadayek El Koba, Cairo, Egypt\",\n        \"employment_date\": \"2003-02-01\",\n        \"image\": \"/permFiles/images/Staff/original/1.jpg\"\n    },\n    \"msg\": \"Data Successfully updated\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    \"StaffProfile\": {\n        \"staff_id\": \"1\",\n        \"gender\": \"Male\",\n        \"ssn\": \"28703110100457\",\n        \"nationality_id\": null,\n        \"marital_status\": null,\n        \"military_status\": null,\n        \"blood_type\": null,\n        \"smoker\": null,\n        \"manager_id\": \"3\",\n        \"employment_status\": null,\n        \"address_2\": \"\",\n        \"city\": null,\n        \"country_id\": null,\n        \"zipcode\": null,\n        \"home_phone\": \"0222584643\",\n        \"medical_insurance\": false,\n        \"medical_insurance_company\": null,\n        \"medical_insurance_start_date\": null,\n        \"medical_insurance_end_date\": null,\n        \"medical_insurance_tags\": null,\n        \"skills_tags\": \"\",\n        \"salary_amount\": null,\n        \"salary_currency_id\": null,\n        \"salary_payment_frequency\": null,\n        \"salary_comments\": null\n    },\n    \"Staff\": {\n        \"id\": \"1\",\n        \"name\": \"Mohab Amr\",\n        \"dob\": \"1987-03-11\",\n        \"personal_phone\": \"0110828725\",\n        \"personal_mail\": \"aymanrb@gmail.com\",\n        \"address\": \"New Awkaff Buildings, Hadayek El Koba, Cairo, Egypt\",\n        \"employment_date\": \"2003-02-01\",\n        \"image\": \"/permFiles/images/Staff/original/1.jpg\"\n    },\n    \"Info\": {\n        \"NumOfWon\": 2,\n        \"NumOfLost\": 0,\n        \"NumOfCancelled\": 0,\n        \"prices\": [\n            {\n                \"abbrev\": \"USD\",\n                \"netValue\": \"200.00\"\n            },\n            {\n                \"abbrev\": \"EUR\",\n                \"netValue\": \"300.00\"\n            }\n        ],\n        \"total\": 2\n    },\n    \"msg\": \"Data Successfully updated\"\n}",
           "type": "json"
         }
       ]
