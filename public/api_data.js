@@ -52,9 +52,103 @@ define({ "api": [
     "groupTitle": "Authentication"
   },
   {
+    "type": "POST",
+    "url": "/users/sign-up/:code",
+    "title": "Register",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>Mandatory Code for invitation .</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n\t \"Staff\": {\n\t \t\"name\": \"Mohamed Maged\",\n\t \t\"dob\": \"1996-11-18\",\n\t \t\"password\": \"123gha\",\n     \"confirm_password\": \"123gha\",\n\t \t\"personal_email\": \"megzz@gmail.com\",\n\t \t\"username\": \"megz_1\",\n\t \t\"address\": \"Makrm ebid, Nasr City\",\n\t \t\"personal_phone\": \"012973187\"\n\t }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "name": "Register",
+    "group": "Authentication",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200 \n{\n     \"msg\": \"Signed up successfully.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-Response:",
+          "content": " HTTP/1.1 404 Not Found\n{\n  \"msg\": \"You are not invited to join the system.\",\n  \"errors\": {\n      \"msg\": \"Your key is invalid.\"\n  }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
+    "groupTitle": "Authentication"
+  },
+  {
+    "type": "GET",
+    "url": "/cities/all",
+    "title": "List Cities",
+    "name": "ListCities",
+    "group": "Cities",
+    "version": "0.1.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "page",
+            "description": "<p>Optional Page number for pagination of results.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "limit",
+            "description": "<p>Optional limit number default set to 200</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "query",
+            "description": "<p>Optional Query Param for Search countries</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n  {\n  \t\"cities\": [\n  \t\t{\n  \t\t\t\"id\": \"233\",\n  \t\t\t\"name\": \" ABHA \"\n  \t\t}\n  \t],\n  \t\"limit\": \"2\",\n  \t\"msg\": \"fetched cities!\",\n  \t\"count\": 1,\n  \t\"current_page\": 1,\n  \t\"last_page\": 1\n  }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/main.php",
+    "groupTitle": "Cities"
+  },
+  {
     "type": "GET",
     "url": "/cities/names",
-    "title": "List Cities Names",
+    "title": "List Names",
     "name": "ListCitiesNames",
     "group": "Cities",
     "version": "0.1.0",
@@ -878,6 +972,25 @@ define({ "api": [
     "version": "0.0.0",
     "filename": "apidoc/mokhtar.php",
     "groupTitle": "Companies"
+  },
+  {
+    "type": "get",
+    "url": "countries/list_all",
+    "title": "Countries All",
+    "name": "CountriesAll",
+    "group": "Countries",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "   HTTP/1.1 200 Ok\n{\n \"Countries\": {\n     \"1\": \"United States\",\n     \"2\": \"Afghanistan\",\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "Countries"
   },
   {
     "type": "get",
@@ -4017,6 +4130,45 @@ define({ "api": [
     "groupTitle": "Items_Hotels"
   },
   {
+    "type": "POST",
+    "url": "/items/meals/:requestId",
+    "title": "Create a new Meal",
+    "name": "CreateMeal",
+    "version": "0.1.0",
+    "group": "Items_Meals",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "requestId",
+            "description": "<p>lead Id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n      \"RequestsMeal\":{\n               \"restaurant_id\": 6,\n               \"pax\":5,\n               \"city_id\":64,\n               \"extra_meal_type_id\":7,\n               \"price\" :2000,\n               \"currency_id\":1,\n               \"date\":\"2017-10-23\"\n   }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "  HTTP/1.1 201 Created\n{\nRequestsMeal\": {\n            \"id\": \"33276\",\n            \"request_id\": \"1000\",\n            \"extra_meal_type_id\": \"7\",\n            \"city_id\": \"64\",\n            \"restaurant_id\": \"6\",\n            \"date\": \"2017-10-23\",\n            \"pax_num\": null,\n            \"notes\": null,\n            \"reservation_status_id\": \"1\",\n            \"created\": \"2018-02-19 12:59:11\",\n            \"pax\": \"4\",\n            \"is_option\": null,\n            \"added_by\": \"1\",\n            \"price\": \"2000.00\",\n            \"currency_id\": \"1\",\n            \"acc_journal_id\": null,\n            \"added_by_guide_id\": null,\n            \"contract_rate\": null,\n            \"contract_currency_id\": null,\n            \"cost_rate\": null,\n            \"cost_currency_id\": null,\n            \"parent_id\": null,\n            \"is_trip\": false,\n            \"option_payment_method\": null\n        },\n        \"Currency\": {\n            \"id\": \"1\",\n            \"currency\": \"Euro\",\n            \"abbrev\": \"EUR\",\n            \"symbol\": \"&#8364;\",\n            \"symbol_direction\": true,\n            \"is_visible\": true\n        },\n        \"Restaurant\": {\n            \"id\": \"6\",\n            \"name\": \"Pharoahs Resturant \",\n            \"address\": \"In the front Of Zoser Pyramids \",\n            \"phone\": null,\n            \"fax\": \"\",\n            \"email\": \"\",\n            \"restaurant_category_id\": \"2\",\n            \"city_id\": \"1\",\n            \"website\": \"\",\n            \"tax_card_num\": null,\n            \"payment_terms\": \"0\",\n            \"is_visible\": true,\n            \"contact_person\": null,\n            \"payment_information\": null\n        },\n        \"ExtraMealType\": {\n            \"id\": \"7\",\n            \"title\": \"Christmas Gala Dinner\",\n            \"duration\": null,\n            \"is_visible\": true\n        },\n        \"City\": {\n            \"id\": \"64\",\n            \"parent_id\": \"0\",\n            \"name\": \"Zürich\",\n            \"branch_id\": \"0\",\n            \"country_id\": \"207\",\n            \"is_visible\": true,\n            \"lat\": null,\n            \"lng\": null\n        }\n    },\n   \"msg\": \"Successfully Added New Extra Meal\"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/main.php",
+    "groupTitle": "Items_Meals"
+  },
+  {
     "type": "PUT",
     "url": "/items/meals/:requestId/:recordId",
     "title": "Edit a meal",
@@ -4065,45 +4217,6 @@ define({ "api": [
         {
           "title": "Error-Response:",
           "content": " HTTP/1.1 404 Not Found\n{\n\"msg\": \"Item not found.\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/main.php",
-    "groupTitle": "Items_Meals"
-  },
-  {
-    "type": "POST",
-    "url": "/items/meals/:requestId",
-    "title": "Create a new Meal",
-    "name": "CreateMeal",
-    "version": "0.1.0",
-    "group": "Items_Meals",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "requestId",
-            "description": "<p>lead Id</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Request-Example:",
-          "content": "{\n      \"RequestsMeal\":{\n               \"restaurant_id\": 6,\n               \"pax\":5,\n               \"city_id\":64,\n               \"extra_meal_type_id\":7,\n               \"price\" :2000,\n               \"currency_id\":1,\n               \"date\":\"2017-10-23\"\n   }\n }",
-          "type": "json"
-        }
-      ]
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "  HTTP/1.1 201 Created\n{\nRequestsMeal\": {\n            \"id\": \"33276\",\n            \"request_id\": \"1000\",\n            \"extra_meal_type_id\": \"7\",\n            \"city_id\": \"64\",\n            \"restaurant_id\": \"6\",\n            \"date\": \"2017-10-23\",\n            \"pax_num\": null,\n            \"notes\": null,\n            \"reservation_status_id\": \"1\",\n            \"created\": \"2018-02-19 12:59:11\",\n            \"pax\": \"4\",\n            \"is_option\": null,\n            \"added_by\": \"1\",\n            \"price\": \"2000.00\",\n            \"currency_id\": \"1\",\n            \"acc_journal_id\": null,\n            \"added_by_guide_id\": null,\n            \"contract_rate\": null,\n            \"contract_currency_id\": null,\n            \"cost_rate\": null,\n            \"cost_currency_id\": null,\n            \"parent_id\": null,\n            \"is_trip\": false,\n            \"option_payment_method\": null\n        },\n        \"Currency\": {\n            \"id\": \"1\",\n            \"currency\": \"Euro\",\n            \"abbrev\": \"EUR\",\n            \"symbol\": \"&#8364;\",\n            \"symbol_direction\": true,\n            \"is_visible\": true\n        },\n        \"Restaurant\": {\n            \"id\": \"6\",\n            \"name\": \"Pharoahs Resturant \",\n            \"address\": \"In the front Of Zoser Pyramids \",\n            \"phone\": null,\n            \"fax\": \"\",\n            \"email\": \"\",\n            \"restaurant_category_id\": \"2\",\n            \"city_id\": \"1\",\n            \"website\": \"\",\n            \"tax_card_num\": null,\n            \"payment_terms\": \"0\",\n            \"is_visible\": true,\n            \"contact_person\": null,\n            \"payment_information\": null\n        },\n        \"ExtraMealType\": {\n            \"id\": \"7\",\n            \"title\": \"Christmas Gala Dinner\",\n            \"duration\": null,\n            \"is_visible\": true\n        },\n        \"City\": {\n            \"id\": \"64\",\n            \"parent_id\": \"0\",\n            \"name\": \"Zürich\",\n            \"branch_id\": \"0\",\n            \"country_id\": \"207\",\n            \"is_visible\": true,\n            \"lat\": null,\n            \"lng\": null\n        }\n    },\n   \"msg\": \"Successfully Added New Extra Meal\"\n }",
           "type": "json"
         }
       ]
@@ -5356,18 +5469,18 @@ define({ "api": [
     "title": "Create Lead",
     "name": "CreateLead",
     "group": "Lead",
-    "description": "<p>either send Client.id or the rest of his details</p>",
+    "description": "<p>either send Client.id or the rest of his details, other_clients key is an optional array for other travellers, The requested traveller is considered a child when the email provided is empty &amp;&amp; the birthdate compared to the today date &lt; 18 yrs The requested traveller's is_child flag become false if the email provided is empty &amp;&amp; the birthdate compared to the today date &gt; 18 yrs The requested travelleris considered an adult when the email provided does not empty &amp;&amp; the birthdate compared to the today date &gt; 18 yrs</p>",
     "version": "0.1.0",
     "parameter": {
       "examples": [
         {
           "title": "Lead-Example:",
-          "content": " {\n    \"Client\": {\n        \"name\": \"Mohab 12\",\n        \"email\": \"mohabamro@gmail.com\",\n        \"crm_organization_id\": 10\n    },\n    \"Request\": {\n        \"notes\": \"no notes yet\",\n        \"department_id\": 1,\n        \"subject\": \"Lead title\",\n        \"num_of_adults\" : \"2\",\n        \"num_of_children\" : \"2\",\n        \"price\":4000,\n        \"currency_id\":3,\n        \"source_id\":4,\n        \"arrival_date\": \"2017-12-19\",\n        \"departure_date\": \"2018-11-20\"\n    }\n}",
+          "content": " {\n    \"Client\": {\n        \"name\": \"Mohab 12\",\n        \"email\": \"mohabamro@gmail.com\",\n        \"crm_organization_id\": 10\n    },\n    \"Request\": {\n        \"notes\": \"no notes yet\",\n        \"department_id\": 1,\n        \"subject\": \"Lead title\",\n        \"num_of_adults\" : \"2\",\n        \"num_of_children\" : \"2\",\n        \"price\":4000,\n        \"currency_id\":3,\n        \"source_id\":4,\n        \"arrival_date\": \"2017-12-19\",\n        \"departure_date\": \"2018-11-20\"\n    },\n    \"other_clients\": [\n       {\n        \"name\": \"test2\",\n        \"email\": \"yasyasmine@deemalab.com\",\n        \"phone\": \"01153771976\",\n        \"birth_date\": \"1994-01-27\",\n       },\n    \t{\n    \t \"name\": \"show\",\n    \t \"email\": \"\",\n    \t \"birth_date\": \"1994-01-27\",\n    \t \"phone\": \"01153771976\"\n    \t},\n    ]\n}",
           "type": "json"
         },
         {
           "title": "Contact-Example:",
-          "content": " {\n    \"Client\": {\n        \"id\": 306899\n    },\n    \"Request\": {\n        \"notes\": \"no notes yet\",\n        \"department_id\": 1,\n        \"subject\": \"Lead title\",\n        \"num_of_adults\" : \"2\",\n        \"num_of_children\" : \"2\",\n        \"price\":4000,\n        \"currency_id\":3\n        \"arrival_date\": \"2017-12-19\",\n        \"departure_date\": \"2018-11-20\"\n    }\n}",
+          "content": " {\n    \"Client\": {\n        \"id\": 306899\n    },\n    \"Request\": {\n        \"notes\": \"no notes yet\",\n        \"department_id\": 1,\n        \"subject\": \"Lead title\",\n        \"num_of_adults\" : \"2\",\n        \"num_of_children\" : \"2\",\n        \"price\":4000,\n        \"currency_id\":3\n        \"arrival_date\": \"2017-12-19\",\n        \"departure_date\": \"2018-11-20\"\n    },\n    \"other_clients\": [\n       {\n        \"name\": \"test2\",\n        \"email\": \"yasyasmine@deemalab.com\",\n        \"phone\": \"01153771976\",\n        \"birth_date\": \"1994-01-27\",\n       },\n    \t{\n    \t \"name\": \"show\",\n    \t \"email\": \"\",\n    \t \"birth_date\": \"1994-01-27\",\n    \t \"phone\": \"01153771976\"\n    \t},\n    ]\n}",
           "type": "json"
         }
       ]
@@ -5376,7 +5489,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "    HTTP/1.1 201 Created\n\n{\n  \"msg\": \"Created new lead\",\n  \"Request\": {\n      \"id\": \"318748\",\n      \"subject\": null,\n      \"arrival_date\": null,\n      \"departure_date\": null,\n      \"num_of_adults\": \"9\",\n      \"num_of_children\": null,\n      \"all_reminders_used\": false,\n      \"request_status_id\": null,\n      \"source_id\": null,\n      \"sub_source_id\": null,\n      \"client_id\": \"306910\",\n      \"staff_id\": \"1\",\n      \"delegated_to\": null,\n      \"ip_address\": null,\n      \"department_id\": null,\n      \"branch_id\": \"1\",\n      \"currency_id\": null,\n      \"request_type_id\": null,\n      \"file_type_id\": null,\n      \"price\": null,\n      \"token\": \"Wq7gvX\",\n      \"confirmed\": null,\n      \"cancelled\": null,\n      \"notes\": null,\n      \"reservation_notes\": null,\n      \"gr_notes\": null,\n      \"leader_notes\": null,\n      \"read_by_operator\": false,\n      \"assignments_notice\": false,\n      \"reservation_notice\": false,\n      \"missed_items_alert\": null,\n      \"starred\": null,\n      \"alert_flag\": null,\n      \"has_attachments\": null,\n      \"created\": \"2018-01-22 14:24:29\",\n      \"last_message_time\": \"2018-01-22 14:24:29\",\n      \"assignment_time\": \"2018-01-22 14:24:29\",\n      \"replies_count\": \"0\",\n      \"children_ages\": null,\n      \"refunded\": null,\n      \"refund_amount\": null,\n      \"refund_currency_id\": null,\n      \"pol_id\": null,\n      \"pod_id\": null,\n      \"etd\": null,\n      \"eta\": null,\n      \"bl_no\": null,\n      \"carrier_id\": null,\n      \"quotation_ref\": null,\n      \"vessel_id\": null,\n      \"final_dest_id\": null,\n      \"c_clearance_id\": null,\n      \"voyage\": null,\n      \"shipper_agent_id\": null,\n      \"shipper_id\": null,\n      \"commodity_id\": null,\n      \"cut_off_date\": null,\n      \"requester_id\": null,\n      \"tags\": null,\n      \"is_released\": false,\n      \"is_trip\": false,\n      \"trip_id\": null,\n      \"alt_payment\": null,\n      \"closure_reason_id\": null,\n      \"instant_booking\": false,\n      \"recommended_by\": null,\n      \"site_token\": null,\n      \"marketer_id\": null,\n      \"program_ref_code\": null\n  },\n  \"Client\": {\n      \"id\": \"306910\",\n      \"name\": \"hozhoh\",\n      \"email\": \"hzoohoh@gmail.com\",\n      \"phone\": null,\n      \"country_id\": null,\n      \"address\": null,\n      \"passport_no\": null,\n      \"passport_issue_date\": null,\n      \"passport_expiry_date\": null,\n      \"client_group_id\": null,\n      \"payment_terms\": null,\n      \"is_visible\": true,\n      \"tax_card_num\": null,\n      \"city_id\": null,\n      \"dob\": null,\n      \"crm_points\": \"0\",\n      \"is_corporate\": false,\n      \"mobile\": null,\n      \"created_by\": \"1\",\n      \"crm_organization_id\": null\n  }\n  }",
+          "content": "    HTTP/1.1 201 Created\n\n{\n  \"msg\": \"Created new lead\",\n  \"Request\": {\n      \"id\": \"318748\",\n      \"subject\": null,\n      \"arrival_date\": null,\n      \"departure_date\": null,\n      \"num_of_adults\": \"9\",\n      \"num_of_children\": null,\n      \"all_reminders_used\": false,\n      \"request_status_id\": null,\n      \"source_id\": null,\n      \"sub_source_id\": null,\n      \"client_id\": \"306910\",\n      \"staff_id\": \"1\",\n      \"delegated_to\": null,\n      \"ip_address\": null,\n      \"department_id\": null,\n      \"branch_id\": \"1\",\n      \"currency_id\": null,\n      \"request_type_id\": null,\n      \"file_type_id\": null,\n      \"price\": null,\n      \"token\": \"Wq7gvX\",\n      \"confirmed\": null,\n      \"cancelled\": null,\n      \"notes\": null,\n      \"reservation_notes\": null,\n      \"gr_notes\": null,\n      \"leader_notes\": null,\n      \"read_by_operator\": false,\n      \"assignments_notice\": false,\n      \"reservation_notice\": false,\n      \"missed_items_alert\": null,\n      \"starred\": null,\n      \"alert_flag\": null,\n      \"has_attachments\": null,\n      \"created\": \"2018-01-22 14:24:29\",\n      \"last_message_time\": \"2018-01-22 14:24:29\",\n      \"assignment_time\": \"2018-01-22 14:24:29\",\n      \"replies_count\": \"0\",\n      \"children_ages\": null,\n      \"refunded\": null,\n      \"refund_amount\": null,\n      \"refund_currency_id\": null,\n      \"pol_id\": null,\n      \"pod_id\": null,\n      \"etd\": null,\n      \"eta\": null,\n      \"bl_no\": null,\n      \"carrier_id\": null,\n      \"quotation_ref\": null,\n      \"vessel_id\": null,\n      \"final_dest_id\": null,\n      \"c_clearance_id\": null,\n      \"voyage\": null,\n      \"shipper_agent_id\": null,\n      \"shipper_id\": null,\n      \"commodity_id\": null,\n      \"cut_off_date\": null,\n      \"requester_id\": null,\n      \"tags\": null,\n      \"is_released\": false,\n      \"is_trip\": false,\n      \"trip_id\": null,\n      \"alt_payment\": null,\n      \"closure_reason_id\": null,\n      \"instant_booking\": false,\n      \"recommended_by\": null,\n      \"site_token\": null,\n      \"marketer_id\": null,\n      \"program_ref_code\": null\n  },\n  \"Client\": {\n      \"id\": \"306910\",\n      \"name\": \"hozhoh\",\n      \"email\": \"hzoohoh@gmail.com\",\n      \"phone\": null,\n      \"country_id\": null,\n      \"address\": null,\n      \"passport_no\": null,\n      \"passport_issue_date\": null,\n      \"passport_expiry_date\": null,\n      \"client_group_id\": null,\n      \"payment_terms\": null,\n      \"is_visible\": true,\n      \"tax_card_num\": null,\n      \"city_id\": null,\n      \"dob\": null,\n      \"crm_points\": \"0\",\n      \"is_corporate\": false,\n      \"mobile\": null,\n      \"created_by\": \"1\",\n      \"crm_organization_id\": null,\n      \"CrmOrganization\": {\n          \"id\": \"1\",\n          \"name\": \"dlc travel tech test\",\n          \"email\": \"dlc@ddtt.com\",\n          \"phone\": \"87652097\"\n      },\n      \"is_primary\": 1\n   },\n  \"other_clients\": [\n      {\n          \"id\": \"1\",\n          \"name\": \"show\",\n          \"email\": \"\",\n          \"phone\": \"01153771976\",\n          \"birth_date\": \"1994-01-27\",\n          \"request_id\": \"332648\",\n          \"created_by\": \"1\",\n          \"is_child\": false,\n          \"is_visible\": true,\n          \"created\": \"2018-04-05 09:43:12\",\n          \"modified\": \"2018-04-05 09:44:34\",\n          \"is_primary\": 0\n      }\n    ]\n  }",
           "type": "json"
         }
       ],
@@ -5658,6 +5771,64 @@ define({ "api": [
     "groupTitle": "Lead"
   },
   {
+    "type": "put",
+    "url": "/requests/other-clients/:id",
+    "title": "Edit Lead Travellers",
+    "version": "0.1.0",
+    "name": "EditLeadTravellers",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Mandatory id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "\n  {\n  \"other_clients\": [\n      {\n          \"id\" :50,\n          \"name\": \"test2\",\n          \"email\": \"\",\n          \"phone\": \"01153771976\",\n          \"birth_date\": \"1994-01-27\"\n      },\n      {\n          \"id\": 3,\n          \"name\": \"test\",\n          \"email\": \"yasmine@deemalab.com\",\n          \"birth_date\": \"1994-01-27\",\n          \"phone\": \"01153371976\"\n      },\n      {\n         \"name\": \"test\",\n         \"email\": \"yasmine@deemalab.com\",\n         \"birth_date\": \"1994-01-27\",\n         \"phone\": \"01153371976\"\n      }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "group": "Lead",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n     {\n     \"Request\": {\n         \"id\": \"23\",\n         \"subject\": \"Edited Lead title\",\n         \"arrival_date\": \"2017-12-19\",\n         \"departure_date\": \"2018-11-20\",\n         \"num_of_adults\": \"2\",\n         \"num_of_children\": \"2\",\n         \"all_reminders_used\": false,\n         \"request_status_id\": \"8\",\n         \"source_id\": null,\n         \"sub_source_id\": null,\n         \"client_id\": \"306898\",\n         \"staff_id\": \"1\",\n         \"delegated_to\": null,\n         \"ip_address\": null,\n         \"department_id\": \"1\",\n         \"branch_id\": \"1\",\n         \"currency_id\": \"3\",\n         \"request_type_id\": null,\n         \"file_type_id\": null,\n         \"price\": \"4000.00\",\n         \"token\": \"jGfAJn\",\n         \"confirmed\": true,\n         \"cancelled\": null,\n         \"notes\": \"New notes\",\n         \"reservation_notes\": null,\n         \"gr_notes\": null,\n         \"leader_notes\": null,\n         \"read_by_operator\": true,\n         \"assignments_notice\": false,\n         \"reservation_notice\": false,\n         \"missed_items_alert\": null,\n         \"starred\": null,\n         \"alert_flag\": null,\n         \"has_attachments\": null,\n         \"created\": \"2017-10-15 22:42:40\",\n         \"last_message_time\": \"2017-10-15 23:30:52\",\n         \"assignment_time\": \"2017-10-15 23:30:52\",\n         \"replies_count\": \"0\",\n         \"children_ages\": null,\n         \"refunded\": null,\n         \"refund_amount\": null,\n         \"refund_currency_id\": null,\n         \"pol_id\": null,\n         \"pod_id\": null,\n         \"etd\": null,\n         \"eta\": null,\n         \"bl_no\": null,\n         \"carrier_id\": null,\n         \"quotation_ref\": null,\n         \"vessel_id\": null,\n         \"final_dest_id\": null,\n         \"c_clearance_id\": null,\n         \"voyage\": null,\n         \"shipper_agent_id\": null,\n         \"shipper_id\": null,\n         \"commodity_id\": null,\n         \"cut_off_date\": null,\n         \"requester_id\": \"398449\",\n         \"tags\": null,\n         \"is_released\": false,\n         \"is_trip\": false,\n         \"trip_id\": null,\n         \"alt_payment\": null,\n         \"closure_reason_id\": null,\n         \"instant_booking\": false,\n         \"recommended_by\": null,\n         \"site_token\": null,\n         \"marketer_id\": null,\n         \"program_ref_code\": null\n     },\n     \"Staff\": {\n         \"name\": \"Mohab Amr\",\n         \"id\": \"1\",\n         \"work_mail\": \"ayman@memphistours.com\"\n     },\n     \"DelegatedTo\": {\n         \"name\": null,\n         \"id\": null,\n         \"work_mail\": null\n     },\n     \"Client\": {\n         \"id\": \"306898\",\n         \"name\": \"Mohab 343\",\n         \"email\": \"mohabamro@gmail.com\",\n         \"phone\": null,\n         \"country_id\": null,\n         \"address\": null,\n         \"passport_no\": null,\n         \"passport_issue_date\": null,\n         \"passport_expiry_date\": null,\n         \"client_group_id\": null,\n         \"payment_terms\": null,\n         \"is_visible\": true,\n         \"tax_card_num\": null,\n         \"city_id\": null,\n         \"dob\": null,\n         \"crm_points\": \"0\",\n         \"is_corporate\": true,\n         \"mobile\": null,\n         \"created_by\": null,\n         \"crm_organization_id\": null\n     },\n     \"Currency\": {\n         \"id\": \"3\",\n         \"currency\": \"Egyptian Pounds\",\n         \"abbrev\": \"EGP\",\n         \"symbol\": \"L.E.\",\n         \"symbol_direction\": true,\n         \"is_visible\": true\n     },\n     \"RequestPayment\": [],\n     \"other_clients\": [\n         {\n             \"id\": \"1\",\n             \"name\": \"show\",\n             \"email\": \"\",\n             \"phone\": \"01153771976\",\n             \"birth_date\": \"1994-01-27\",\n             \"request_id\": \"332648\",\n             \"created_by\": \"1\",\n             \"is_child\": false,\n             \"is_visible\": true,\n             \"created\": \"2018-04-05 09:43:12\",\n             \"modified\": \"2018-04-05 09:44:34\",\n             \"is_primary\": 0\n         }\n     ],\n     \"errors\": [\n       {\n        \"email\": \"yas\",\n        \"msg\": \"Failed to create this client!\",\n        \"errors\": {\n            \"name\": [\n                \"You already have this name added\"\n            ],\n            \"email\": [\n                \"Please Supply a Valid E-mail Address\"\n            ]\n        }\n      },\n    ]\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "RequestNotFound",
+            "description": "<p>The id of the Request was not found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n      \"msg\": \"Request not found.\",\n      \"errors\": {\n          \"msg\": \"Invalid Lead ID provided.\"\n      }\n  }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "Lead"
+  },
+  {
     "type": "post",
     "url": "/requests/filter",
     "title": "Filter Leads",
@@ -5747,7 +5918,7 @@ define({ "api": [
     "title": "Lead's Item prices",
     "version": "0.1.0",
     "name": "LeadsItemsPrices",
-    "group": "LeadItem",
+    "group": "Lead",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -5771,7 +5942,7 @@ define({ "api": [
       ]
     },
     "filename": "apidoc/main.php",
-    "groupTitle": "LeadItem"
+    "groupTitle": "Lead"
   },
   {
     "type": "get",
@@ -5948,39 +6119,6 @@ define({ "api": [
     "groupTitle": "Lead"
   },
   {
-    "type": "get",
-    "url": "/requests/files/:request_id",
-    "title": "List Lead's Files",
-    "version": "0.1.0",
-    "name": "ListFiles",
-    "group": "Lead",
-    "description": "<p>List of urls (files/attachments) attached to this lead.</p>",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "request_id",
-            "description": "<p>Mandatory REQUEST ID.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n \"files\": []\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/main.php",
-    "groupTitle": "Lead"
-  },
-  {
     "type": "post",
     "url": "/requests/files/:request_id",
     "title": "Delete Lead's Files",
@@ -6021,6 +6159,39 @@ define({ "api": [
         {
           "title": "Error-Response:",
           "content": "HTTP/1.1 400 Bad Request\n  {\n      \"msg\": \"Not all files were deleted.\",\n      \"failed\": [\n          \"user_files_uploads/Request/23/user_files_uploads\\\\Request\\\\23\\\\14642470_1269141953120551_1685851538751829764_n.jpg\"\n      ]\n  }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/main.php",
+    "groupTitle": "Lead"
+  },
+  {
+    "type": "get",
+    "url": "/requests/files/:request_id",
+    "title": "List Lead's Files",
+    "version": "0.1.0",
+    "name": "ListFiles",
+    "group": "Lead",
+    "description": "<p>List of urls (files/attachments) attached to this lead.</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "request_id",
+            "description": "<p>Mandatory REQUEST ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n \"files\": []\n}",
           "type": "json"
         }
       ]
@@ -6098,6 +6269,38 @@ define({ "api": [
       ]
     },
     "filename": "apidoc/main.php",
+    "groupTitle": "Lead"
+  },
+  {
+    "type": "get",
+    "url": "requests/other-clients/list/:request_id",
+    "title": "List Travellers",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "request_id",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "name": "ListTravellers",
+    "group": "Lead",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n {\n\"msg\": \"Fetched travellers!\",\n\"travellers\": [\n    {\n        \"id\": \"1\",\n        \"name\": \"show\",\n        \"email\": \"\",\n        \"phone\": \"01153771976\",\n        \"birth_date\": \"1994-01-27\",\n        \"request_id\": \"332648\",\n        \"created_by\": \"1\",\n        \"is_child\": false,\n        \"is_visible\": true,\n        \"created\": \"2018-04-05 09:43:12\",\n        \"modified\": \"2018-04-05 09:44:34\",\n        \"is_primary\": 0\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
     "groupTitle": "Lead"
   },
   {
@@ -6620,6 +6823,53 @@ define({ "api": [
     },
     "filename": "apidoc/mokhtar.php",
     "groupTitle": "ListsController"
+  },
+  {
+    "type": "put",
+    "url": "/mail/config_mail_credentials",
+    "title": "Configure mail pool settings",
+    "name": "ConfigMailFetching",
+    "group": "MailFetching",
+    "version": "0.1.0",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n\t\"IMAP\": {\n\t\t\"password\": \"passwordMohabElgamda\",\n\t\t\"email\": \"mohab@deemalab.com\",\n\t\t\"option\": \"gmail\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n\t\"msg\": \"Saved IMAP configuration.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mohab.php",
+    "groupTitle": "MailFetching"
+  },
+  {
+    "type": "get",
+    "url": "/mail/fetch_inbox_emails",
+    "title": "Covert mails to deals",
+    "name": "FetchMails",
+    "group": "MailFetching",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"msg\": \"Finshed fetching and converting emails.\",\n    \"Log\": \"=========================[Reading Session: 2018-04-07 17:32:53]==========================\n        Loaded Vendors Successfully\\nConecting to the inbox ....\n        Found a total of 2 mails to read ... \n        Finished reading session.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mohab.php",
+    "groupTitle": "MailFetching"
   },
   {
     "type": "POST",
@@ -7682,47 +7932,6 @@ define({ "api": [
     "name": "GetRequestsNotesRequest_id"
   },
   {
-    "type": "DELETE",
-    "url": "/organizations/:id",
-    "title": "Delete Organization",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "id",
-            "description": "<p>Organization Id</p>"
-          }
-        ]
-      }
-    },
-    "name": "DeleteOrganization",
-    "group": "Organization",
-    "version": "0.1.0",
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 Ok\n   {\n   \"msg\": \"Organization successfully deleted\"\n   }",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 404 Not Found\n{\n    \"msg\": \"organization not found.\",\n    \"errors\": {\n        \"msg\": \"Invalid organization ID provided.\"\n    }\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/mokhtar.php",
-    "groupTitle": "Organization"
-  },
-  {
     "type": "POST",
     "url": "/organizations",
     "title": "Create New Organization",
@@ -7803,11 +8012,8 @@ define({ "api": [
   },
   {
     "type": "DELETE",
-    "url": "/organizations/:Id",
-    "title": "",
-    "version": "0.1.0",
-    "name": "DeleteOrganization",
-    "group": "Organizations",
+    "url": "/organizations/:id",
+    "title": "Delete Organization",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -7815,17 +8021,20 @@ define({ "api": [
             "group": "Parameter",
             "type": "Number",
             "optional": false,
-            "field": "Id",
-            "description": "<p>organization Id</p>"
+            "field": "id",
+            "description": "<p>Organization Id</p>"
           }
         ]
       }
     },
+    "name": "DeleteOrganization",
+    "group": "Organizations",
+    "version": "0.1.0",
     "success": {
       "examples": [
         {
-          "title": "Response-Example:",
-          "content": " {\n\"msg\": \"Organization successfully deleted\"\n}",
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 Ok\n   {\n   \"msg\": \"Organization successfully deleted\"\n   }",
           "type": "json"
         }
       ]
@@ -7834,12 +8043,12 @@ define({ "api": [
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "{\n     \"msg\": \"Request not found.\",\n     \"errors\": {\n         \"msg\": \"Invalid Lead ID provided.\"\n     }\n}",
+          "content": "HTTP/1.1 404 Not Found\n{\n    \"msg\": \"organization not found.\",\n    \"errors\": {\n        \"msg\": \"Invalid organization ID provided.\"\n    }\n}",
           "type": "json"
         }
       ]
     },
-    "filename": "apidoc/main.php",
+    "filename": "apidoc/mokhtar.php",
     "groupTitle": "Organizations"
   },
   {
@@ -8694,6 +8903,13 @@ define({ "api": [
           },
           {
             "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "limit",
+            "description": "<p>Optional limit number for limit results default set to 200</p>"
+          },
+          {
+            "group": "Parameter",
             "type": "String",
             "optional": true,
             "field": "query",
@@ -8795,45 +9011,6 @@ define({ "api": [
     },
     "filename": "apidoc/yasmine.php",
     "groupTitle": "Sources"
-  },
-  {
-    "type": "GET",
-    "url": "/users/list/detailed",
-    "title": "List All Staff",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": true,
-            "field": "term",
-            "description": "<p>Optional search key could be name or email.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": true,
-            "field": "page",
-            "description": "<p>Optional (pagination) page number.</p>"
-          }
-        ]
-      }
-    },
-    "name": "ListStaff",
-    "group": "Staff",
-    "version": "0.1.0",
-    "success": {
-      "examples": [
-        {
-          "title": "success-Response:",
-          "content": "HTTP/1.1 200 \n  {\n      \"filtered\": true,\n      \"staff\": [\n          {\n              \"Staff\": {\n                  \"id\": \"831\",\n                  \"name\": \"Ahmed Mostafa\",\n                  \"work_mail\": \"urlaube@memphistours.com \"\n              },\n              \"JobTitle\": {\n                  \"title\": \"Tour Operator\"\n              },\n              \"Department\": {\n                  \"name\": \"German\"\n              }\n          }\n      ],\n      \"limit\": 100,\n      \"count\": 16,\n      \"current_page\": 1,\n      \"last_page\": 1\n  }",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/mokhtar.php",
-    "groupTitle": "Staff"
   },
   {
     "type": "post",
@@ -9738,6 +9915,57 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/requests/tasks/:request_id",
+    "title": "List Lead's Tasks",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "page",
+            "description": "<p>Optional Page number for pagination of results.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "request_id",
+            "description": "<p>Mandatory REQUEST ID.</p>"
+          }
+        ]
+      }
+    },
+    "name": "ListTasks",
+    "group": "Tasks",
+    "version": "0.1.0",
+    "description": "<p>Lists all tasks related to the signed in user.</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n  {\n    \"tasks\": [\n        {\n            \"SysTask\": {\n                \"id\": \"32\",\n                \"parent_id\": null,\n                \"staff_id\": \"1\",\n                \"created_by\": \"1\",\n                \"task_type\": \"1\",\n                \"model\": \"Request\",\n                \"model_key\": \"42\",\n                \"priority_id\": \"2\",\n                \"status_id\": \"2\",\n                \"subject\": \"Bakr 3ayz sho3lo\",\n                \"done_percentage\": null,\n                \"description\": \"bal7a task\",\n                \"due_date\": \"2017-10-18\",\n                \"started_on\": null,\n                \"completed_on\": null,\n                \"send_notification_email\": null,\n                \"watcher\": null,\n                \"created\": \"2018-02-27 17:53:59\",\n                \"modified\": \"2018-02-27 17:53:59\",\n                \"lft\": \"61\",\n                \"rght\": \"62\",\n                \"is_visible\": true,\n                \"task_type_id\": \"1\",\n                \"due_time\": null\n            },\n            \"Staff\": {\n                \"name\": \"Mohab Amr\"\n            },\n            \"CreatedBy\": {\n                \"id\": \"1\",\n                \"name\": \"Mohab Amr\"\n            },\n            \"TaskType\": {\n                \"id\": \"1\",\n                \"name\": \"Progress\",\n                \"is_visible\": true\n            },\n            \"status\": \"Deferred\"\n        }\n    ],\n    \"count\": 14,\n    \"current_page\": \"1\",\n    \"last_page\": 1,\n    \"limit\": 15\n}",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "tasks",
+            "description": "<p>Retrieved tasks and related entities from database.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "apidoc/mohab.php",
+    "groupTitle": "Tasks"
+  },
+  {
+    "type": "get",
     "url": "/tasks/",
     "title": "List All User's Tasks",
     "parameter": {
@@ -9791,105 +10019,6 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/requests/tasks/:request_id",
-    "title": "List Lead's Tasks",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": true,
-            "field": "page",
-            "description": "<p>Optional Page number for pagination of results.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "request_id",
-            "description": "<p>Mandatory REQUEST ID.</p>"
-          }
-        ]
-      }
-    },
-    "name": "ListTasks",
-    "group": "Tasks",
-    "version": "0.1.0",
-    "description": "<p>Lists all tasks related to the signed in user.</p>",
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n  {\n    \"tasks\": [\n        {\n            \"SysTask\": {\n                \"id\": \"32\",\n                \"parent_id\": null,\n                \"staff_id\": \"1\",\n                \"created_by\": \"1\",\n                \"task_type\": \"1\",\n                \"model\": \"Request\",\n                \"model_key\": \"42\",\n                \"priority_id\": \"2\",\n                \"status_id\": \"2\",\n                \"subject\": \"Bakr 3ayz sho3lo\",\n                \"done_percentage\": null,\n                \"description\": \"bal7a task\",\n                \"due_date\": \"2017-10-18\",\n                \"started_on\": null,\n                \"completed_on\": null,\n                \"send_notification_email\": null,\n                \"watcher\": null,\n                \"created\": \"2018-02-27 17:53:59\",\n                \"modified\": \"2018-02-27 17:53:59\",\n                \"lft\": \"61\",\n                \"rght\": \"62\",\n                \"is_visible\": true,\n                \"task_type_id\": \"1\",\n                \"due_time\": null\n            },\n            \"Staff\": {\n                \"name\": \"Mohab Amr\"\n            },\n            \"CreatedBy\": {\n                \"id\": \"1\",\n                \"name\": \"Mohab Amr\"\n            },\n            \"TaskType\": {\n                \"id\": \"1\",\n                \"name\": \"Progress\",\n                \"is_visible\": true\n            },\n            \"status\": \"Deferred\"\n        }\n    ],\n    \"count\": 14,\n    \"current_page\": \"1\",\n    \"last_page\": 1,\n    \"limit\": 15\n}",
-          "type": "json"
-        }
-      ],
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object[]",
-            "optional": false,
-            "field": "tasks",
-            "description": "<p>Retrieved tasks and related entities from database.</p>"
-          }
-        ]
-      }
-    },
-    "filename": "apidoc/mohab.php",
-    "groupTitle": "Tasks"
-  },
-  {
-    "type": "POST",
-    "url": "/api_auth/sign_up_invitation/:code",
-    "title": "SignUp New User",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "code",
-            "description": "<p>Mandatory Code for invitation .</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Request-Example:",
-          "content": "{\n\t \"Staff\": {\n\t \t\"name\": \"Mohamed Maged\",\n\t \t\"dob\": \"1996-11-18\",\n\t \t\"password\": \"ghostrider\",\n\t \t\"personal_email\": \"megzz@gmail.com\",\n\t \t\"username\": \"megz_1\",\n\t \t\"address\": \"Makrm ebid, Nasr City\",\n\t \t\"personal_phone\": \"012973187\"\n\t }\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "name": "UserSignUpViaInvitationLink",
-    "group": "User",
-    "version": "0.1.0",
-    "success": {
-      "examples": [
-        {
-          "title": "success-Response:",
-          "content": "HTTP/1.1 200 \n{\n     \"msg\": \"Signed up successfully.\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "error-Response:",
-          "content": " HTTP/1.1 404 Not Found\n{\n  \"msg\": \"You are not invited to join the system.\",\n  \"errors\": {\n      \"msg\": \"Your key is invalid.\"\n  }\n }",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/mokhtar.php",
-    "groupTitle": "User"
-  },
-  {
-    "type": "get",
     "url": "/users/all",
     "title": "List all Users",
     "name": "ListAllUsers",
@@ -9924,6 +10053,45 @@ define({ "api": [
       ]
     },
     "filename": "apidoc/yasmine.php",
+    "groupTitle": "Users"
+  },
+  {
+    "type": "GET",
+    "url": "/users/list/detailed",
+    "title": "List All Staff",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "term",
+            "description": "<p>Optional search key could be name or email.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "page",
+            "description": "<p>Optional (pagination) page number.</p>"
+          }
+        ]
+      }
+    },
+    "name": "ListStaff",
+    "group": "Users",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200 \n  {\n      \"filtered\": true,\n      \"staff\": [\n          {\n              \"Staff\": {\n                  \"id\": \"831\",\n                  \"name\": \"Ahmed Mostafa\",\n                  \"work_mail\": \"urlaube@memphistours.com \"\n              },\n              \"JobTitle\": {\n                  \"title\": \"Tour Operator\"\n              },\n              \"Department\": {\n                  \"name\": \"German\"\n              }\n          }\n      ],\n      \"limit\": 100,\n      \"count\": 16,\n      \"current_page\": 1,\n      \"last_page\": 1\n  }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
     "groupTitle": "Users"
   },
   {
