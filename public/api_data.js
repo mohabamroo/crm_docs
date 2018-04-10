@@ -4441,54 +4441,6 @@ define({ "api": [
   {
     "type": "DELETE",
     "url": "/items/sightseeings/:requestId/:Id",
-    "title": "Delete an existing Sightseeing",
-    "version": "0.1.0",
-    "name": "DeleteThingsToDoItem",
-    "group": "Items_ThingsToDo",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "requestId",
-            "description": "<p>lead Id</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "Id",
-            "description": "<p>sightseeing Id</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Response-Example:",
-          "content": "{\n  \"msg\": \"element on file was successfully deleted\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "\n  {\n    \"msg\": \"Request not found.\",\n    \"errors\": {\n        \"msg\": \"Invalid Lead ID provided.\"\n    }\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/main.php",
-    "groupTitle": "Items_ThingsToDo"
-  },
-  {
-    "type": "DELETE",
-    "url": "/items/sightseeings/:requestId/:Id",
     "title": "view an existing Sightseeing",
     "version": "0.1.0",
     "name": "DeleteThingsToDoItem",
@@ -4527,6 +4479,54 @@ define({ "api": [
         {
           "title": "Error-Response:",
           "content": "{\n \"msg\": \"Data not found\",\n \"errors\": [\n     \"Id not found.\"\n   ]\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/main.php",
+    "groupTitle": "Items_ThingsToDo"
+  },
+  {
+    "type": "DELETE",
+    "url": "/items/sightseeings/:requestId/:Id",
+    "title": "Delete an existing Sightseeing",
+    "version": "0.1.0",
+    "name": "DeleteThingsToDoItem",
+    "group": "Items_ThingsToDo",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "requestId",
+            "description": "<p>lead Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "Id",
+            "description": "<p>sightseeing Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Response-Example:",
+          "content": "{\n  \"msg\": \"element on file was successfully deleted\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n  {\n    \"msg\": \"Request not found.\",\n    \"errors\": {\n        \"msg\": \"Invalid Lead ID provided.\"\n    }\n}",
           "type": "json"
         }
       ]
@@ -6119,6 +6119,39 @@ define({ "api": [
     "groupTitle": "Lead"
   },
   {
+    "type": "get",
+    "url": "/requests/files/:request_id",
+    "title": "List Lead's Files",
+    "version": "0.1.0",
+    "name": "ListFiles",
+    "group": "Lead",
+    "description": "<p>List of urls (files/attachments) attached to this lead.</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "request_id",
+            "description": "<p>Mandatory REQUEST ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n \"files\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/main.php",
+    "groupTitle": "Lead"
+  },
+  {
     "type": "post",
     "url": "/requests/files/:request_id",
     "title": "Delete Lead's Files",
@@ -6159,39 +6192,6 @@ define({ "api": [
         {
           "title": "Error-Response:",
           "content": "HTTP/1.1 400 Bad Request\n  {\n      \"msg\": \"Not all files were deleted.\",\n      \"failed\": [\n          \"user_files_uploads/Request/23/user_files_uploads\\\\Request\\\\23\\\\14642470_1269141953120551_1685851538751829764_n.jpg\"\n      ]\n  }",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/main.php",
-    "groupTitle": "Lead"
-  },
-  {
-    "type": "get",
-    "url": "/requests/files/:request_id",
-    "title": "List Lead's Files",
-    "version": "0.1.0",
-    "name": "ListFiles",
-    "group": "Lead",
-    "description": "<p>List of urls (files/attachments) attached to this lead.</p>",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "request_id",
-            "description": "<p>Mandatory REQUEST ID.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n \"files\": []\n}",
           "type": "json"
         }
       ]
@@ -6714,6 +6714,45 @@ define({ "api": [
       ]
     },
     "filename": "apidoc/mokhtar.php",
+    "groupTitle": "ListsController"
+  },
+  {
+    "type": "PUT",
+    "url": "/lists/main/:id",
+    "title": "Edit List",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Madatory List Id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n  \"List\": {\n  \t\"title\": \"m7mdeszze\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "name": "EditList",
+    "group": "ListsController",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200\n  {\n      \"msg\": \"Retrieved list with clients.\",\n      \"list\": {\n          \"ContactsList\": {\n              \"id\": \"6\",\n              \"title\": \"m7mdeszze\"\n          },\n          \"members\": [\n              {\n                  \"id\": \"1\",\n                  \"name\": \"Mohab\",\n                  \"email\": \"mohab@deemalab.com\",\n                  \"phone\": null,\n                  \"dob\": null,\n                  \"mobile\": null,\n                  \"crm_points\": \"41\"\n              }\n          ]\n      }\n  }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mohab.php",
     "groupTitle": "ListsController"
   },
   {
