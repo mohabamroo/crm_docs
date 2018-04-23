@@ -415,6 +415,13 @@
             "optional": true,
             "field": "query",
             "description": "<p>Optional query string for autocomplete</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "page",
+            "description": "<p>Optional Page number for pagination of results.</p>"
           }
         ]
       }
@@ -4137,6 +4144,45 @@
     "groupTitle": "Items_Hotels"
   },
   {
+    "type": "POST",
+    "url": "/items/meals/:requestId",
+    "title": "Create a new Meal",
+    "name": "CreateMeal",
+    "version": "0.1.0",
+    "group": "Items_Meals",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "requestId",
+            "description": "<p>lead Id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n      \"RequestsMeal\":{\n               \"restaurant_id\": 6,\n               \"pax\":5,\n               \"city_id\":64,\n               \"extra_meal_type_id\":7,\n               \"price\" :2000,\n               \"currency_id\":1,\n               \"date\":\"2017-10-23\"\n   }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "  HTTP/1.1 201 Created\n{\nRequestsMeal\": {\n            \"id\": \"33276\",\n            \"request_id\": \"1000\",\n            \"extra_meal_type_id\": \"7\",\n            \"city_id\": \"64\",\n            \"restaurant_id\": \"6\",\n            \"date\": \"2017-10-23\",\n            \"pax_num\": null,\n            \"notes\": null,\n            \"reservation_status_id\": \"1\",\n            \"created\": \"2018-02-19 12:59:11\",\n            \"pax\": \"4\",\n            \"is_option\": null,\n            \"added_by\": \"1\",\n            \"price\": \"2000.00\",\n            \"currency_id\": \"1\",\n            \"acc_journal_id\": null,\n            \"added_by_guide_id\": null,\n            \"contract_rate\": null,\n            \"contract_currency_id\": null,\n            \"cost_rate\": null,\n            \"cost_currency_id\": null,\n            \"parent_id\": null,\n            \"is_trip\": false,\n            \"option_payment_method\": null\n        },\n        \"Currency\": {\n            \"id\": \"1\",\n            \"currency\": \"Euro\",\n            \"abbrev\": \"EUR\",\n            \"symbol\": \"&#8364;\",\n            \"symbol_direction\": true,\n            \"is_visible\": true\n        },\n        \"Restaurant\": {\n            \"id\": \"6\",\n            \"name\": \"Pharoahs Resturant \",\n            \"address\": \"In the front Of Zoser Pyramids \",\n            \"phone\": null,\n            \"fax\": \"\",\n            \"email\": \"\",\n            \"restaurant_category_id\": \"2\",\n            \"city_id\": \"1\",\n            \"website\": \"\",\n            \"tax_card_num\": null,\n            \"payment_terms\": \"0\",\n            \"is_visible\": true,\n            \"contact_person\": null,\n            \"payment_information\": null\n        },\n        \"ExtraMealType\": {\n            \"id\": \"7\",\n            \"title\": \"Christmas Gala Dinner\",\n            \"duration\": null,\n            \"is_visible\": true\n        },\n        \"City\": {\n            \"id\": \"64\",\n            \"parent_id\": \"0\",\n            \"name\": \"Zürich\",\n            \"branch_id\": \"0\",\n            \"country_id\": \"207\",\n            \"is_visible\": true,\n            \"lat\": null,\n            \"lng\": null\n        }\n    },\n   \"msg\": \"Successfully Added New Extra Meal\"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/main.php",
+    "groupTitle": "Items_Meals"
+  },
+  {
     "type": "PUT",
     "url": "/items/meals/:requestId/:recordId",
     "title": "Edit a meal",
@@ -4185,45 +4231,6 @@
         {
           "title": "Error-Response:",
           "content": " HTTP/1.1 404 Not Found\n{\n\"msg\": \"Item not found.\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/main.php",
-    "groupTitle": "Items_Meals"
-  },
-  {
-    "type": "POST",
-    "url": "/items/meals/:requestId",
-    "title": "Create a new Meal",
-    "name": "CreateMeal",
-    "version": "0.1.0",
-    "group": "Items_Meals",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "requestId",
-            "description": "<p>lead Id</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Request-Example:",
-          "content": "{\n      \"RequestsMeal\":{\n               \"restaurant_id\": 6,\n               \"pax\":5,\n               \"city_id\":64,\n               \"extra_meal_type_id\":7,\n               \"price\" :2000,\n               \"currency_id\":1,\n               \"date\":\"2017-10-23\"\n   }\n }",
-          "type": "json"
-        }
-      ]
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "  HTTP/1.1 201 Created\n{\nRequestsMeal\": {\n            \"id\": \"33276\",\n            \"request_id\": \"1000\",\n            \"extra_meal_type_id\": \"7\",\n            \"city_id\": \"64\",\n            \"restaurant_id\": \"6\",\n            \"date\": \"2017-10-23\",\n            \"pax_num\": null,\n            \"notes\": null,\n            \"reservation_status_id\": \"1\",\n            \"created\": \"2018-02-19 12:59:11\",\n            \"pax\": \"4\",\n            \"is_option\": null,\n            \"added_by\": \"1\",\n            \"price\": \"2000.00\",\n            \"currency_id\": \"1\",\n            \"acc_journal_id\": null,\n            \"added_by_guide_id\": null,\n            \"contract_rate\": null,\n            \"contract_currency_id\": null,\n            \"cost_rate\": null,\n            \"cost_currency_id\": null,\n            \"parent_id\": null,\n            \"is_trip\": false,\n            \"option_payment_method\": null\n        },\n        \"Currency\": {\n            \"id\": \"1\",\n            \"currency\": \"Euro\",\n            \"abbrev\": \"EUR\",\n            \"symbol\": \"&#8364;\",\n            \"symbol_direction\": true,\n            \"is_visible\": true\n        },\n        \"Restaurant\": {\n            \"id\": \"6\",\n            \"name\": \"Pharoahs Resturant \",\n            \"address\": \"In the front Of Zoser Pyramids \",\n            \"phone\": null,\n            \"fax\": \"\",\n            \"email\": \"\",\n            \"restaurant_category_id\": \"2\",\n            \"city_id\": \"1\",\n            \"website\": \"\",\n            \"tax_card_num\": null,\n            \"payment_terms\": \"0\",\n            \"is_visible\": true,\n            \"contact_person\": null,\n            \"payment_information\": null\n        },\n        \"ExtraMealType\": {\n            \"id\": \"7\",\n            \"title\": \"Christmas Gala Dinner\",\n            \"duration\": null,\n            \"is_visible\": true\n        },\n        \"City\": {\n            \"id\": \"64\",\n            \"parent_id\": \"0\",\n            \"name\": \"Zürich\",\n            \"branch_id\": \"0\",\n            \"country_id\": \"207\",\n            \"is_visible\": true,\n            \"lat\": null,\n            \"lng\": null\n        }\n    },\n   \"msg\": \"Successfully Added New Extra Meal\"\n }",
           "type": "json"
         }
       ]
@@ -6063,6 +6070,13 @@
             "optional": true,
             "field": "page",
             "description": "<p>Optional Page number for pagination of results.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "won",
+            "description": "<p>Optional param [1 for won leads &amp; 0 for lost leads]</p>"
           }
         ]
       }
@@ -6071,7 +6085,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"requests\": [\n        {\n            \"Request\": {\n                \"subject\": \"Edited Lead title\",\n                \"id\": \"23\",\n                \"arrival_date\": \"2017-12-19\",\n                \"departure_date\": \"2018-11-20\",\n                \"num_of_adults\": \"2\",\n                \"num_of_children\": \"2\",\n                \"confirmed\": true,\n                \"staff_id\": \"1\",\n                \"delegated_to\": null,\n                \"created\": \"2017-10-15 22:42:40\"\n            },\n            \"Staff\": {\n                \"name\": \"Mohab Amr\",\n                \"id\": \"1\"\n            },\n            \"Delegate\": {\n                \"name\": null,\n                \"id\": null\n            },\n            \"RequestStatus\": {\n                \"title\": \"Deleted\",\n                \"id\": \"8\"\n            },\n            \"Client\": {\n                \"name\": \"Mohab 343\",\n                \"is_corporate\": true,\n                \"email\": \"mohabamro@gmail.com\"\n            },\n            \"Currency\": {\n                \"currency\": \"Egyptian Pounds\",\n                \"abbrev\": \"EGP\"\n            }\n        }\n    ],\n    \"count\": 22517\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    \"requests\": [\n        {\n            \"Request\": {\n                \"subject\": \"Edited Lead title\",\n                \"id\": \"23\",\n                \"arrival_date\": \"2017-12-19\",\n                \"departure_date\": \"2018-11-20\",\n                \"num_of_adults\": \"2\",\n                \"num_of_children\": \"2\",\n                \"confirmed\": true,\n                \"staff_id\": \"1\",\n                \"price\": \"1720.00\",\n                \"delegated_to\": null,\n                \"created\": \"2017-10-15 22:42:40\"\n            },\n            \"Staff\": {\n                \"name\": \"Mohab Amr\",\n                \"id\": \"1\"\n            },\n            \"Delegate\": {\n                \"name\": null,\n                \"id\": null\n            },\n            \"RequestStatus\": {\n                \"title\": \"Deleted\",\n                \"id\": \"8\"\n            },\n            \"Client\": {\n                \"name\": \"Mohab 343\",\n                \"is_corporate\": true,\n                \"email\": \"mohabamro@gmail.com\"\n            },\n            \"Currency\": {\n                \"currency\": \"Egyptian Pounds\",\n                \"abbrev\": \"EGP\"\n            }\n        }\n    ],\n    \"count\": 22517\n}",
           "type": "json"
         }
       ]
@@ -6270,7 +6284,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n {\n  \"requests\": [\n   {\n    \"Requests\": [\n      {\n       \"Request\": {\n         \"id\": \"332454\",\n         \"price\": null,\n         \"subject\": \"\",\n         \"currency_id\": null,\n         \"request_status_id\": \"6\",\n         \"arrival_date\": \"2018-01-30\",\n         \"departure_date\": \"2018-02-15\",\n         \"staff_id\": \"1\",\n         \"delegated_to\": null,\n         \"confirmed\": null\n        },\n       \"Client\": {\n         \"name\": \"Yasmen Yousry\",\n         \"id\": \"2436\",\n         \"CrmOrganization\": []\n       },\n       \"Source\": {\n         \"source\": \"US Site\",\n         \"id\": \"1\"\n       },\n       \"Staff\": {\n         \"name\": \"Yasmine Alaa\",\n         \"id\": \"1\"\n       },\n       \"Branch\": {\n         \"name\": \"Giza {Head Office}\",\n         \"id\": \"1\"\n       },\n       \"Currency\": {\n         \"id\": null,\n         \"currency\": null,\n         \"abbrev\": null,\n         \"symbol\": null\n       },\n       \"RequestStatus\": {\n         \"id\": \"6\"\n       },\n       \"RequestsDestination\": []\n       ]},\n       \"Status\": {\n        \"id\": \"2\",\n        \"title\": \"Pending Operator's Reply\",\n        \"order\": \"2\",\n        \"active\": true,\n        \"is_visible\": true,\n        \"count\": 4\n       }\n      ],\n      \"pagination_limit\": 20,\n       \"pagination_page\": 1,\n        \"count\": 3",
+          "content": "HTTP/1.1 200 OK\n {\n  \"requests\": [\n   {\n    \"Requests\": [\n      {\n       \"Request\": {\n         \"id\": \"332454\",\n         \"price\": null,\n         \"subject\": \"\",\n         \"currency_id\": null,\n         \"request_status_id\": \"6\",\n         \"arrival_date\": \"2018-01-30\",\n         \"departure_date\": \"2018-02-15\",\n         \"staff_id\": \"1\",\n         \"delegated_to\": null,\n         \"confirmed\": null,\n         \"activities_count\": 2\n        },\n       \"Client\": {\n         \"name\": \"Yasmen Yousry\",\n         \"id\": \"2436\",\n         \"CrmOrganization\": []\n       },\n       \"Source\": {\n         \"source\": \"US Site\",\n         \"id\": \"1\"\n       },\n       \"Staff\": {\n         \"name\": \"Yasmine Alaa\",\n         \"id\": \"1\"\n       },\n       \"Branch\": {\n         \"name\": \"Giza {Head Office}\",\n         \"id\": \"1\"\n       },\n       \"Currency\": {\n         \"id\": null,\n         \"currency\": null,\n         \"abbrev\": null,\n         \"symbol\": null\n       },\n       \"RequestStatus\": {\n         \"id\": \"6\"\n       },\n       \"RequestsDestination\": []\n       ]},\n       \"Status\": {\n        \"id\": \"2\",\n        \"title\": \"Pending Operator's Reply\",\n        \"order\": \"2\",\n        \"active\": true,\n        \"is_visible\": true,\n        \"count\": 4\n       }\n      ],\n      \"pagination_limit\": 20,\n       \"pagination_page\": 1,\n        \"count\": 3",
           "type": "json"
         }
       ]
@@ -6724,6 +6738,43 @@
     "groupTitle": "ListsController"
   },
   {
+    "type": "POST",
+    "url": "/lists/bulk-delete",
+    "title": "Delete Multiple Lists",
+    "name": "DeleteMultipleLists",
+    "group": "ListsController",
+    "version": "0.1.0",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n   \"lists\" :[\n      4,2,3\n   ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200\n{\n  \"errors\": [],\n  \"msg\": \"Successfully deleted the requested lists\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": " HTTP/1.1 400 Bad Request\n{\n \"errors\": [\n     {\n         \"id\": 5,\n         \"msg\": \"This list doesn't exist\"\n     }\n ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "ListsController"
+  },
+  {
     "type": "PUT",
     "url": "/lists/main/:id",
     "title": "Edit List",
@@ -6915,6 +6966,25 @@
       ]
     },
     "filename": "apidoc/mohab.php",
+    "groupTitle": "MailFetching"
+  },
+  {
+    "type": "get",
+    "url": "mail/config-info",
+    "title": "Read mail settings",
+    "name": "ReadMailSettings",
+    "group": "MailFetching",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n \"Mail\": {\n    \"username\": \"yas\",\n    \"password\": \"gd******f\"\n }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
     "groupTitle": "MailFetching"
   },
   {
@@ -8445,6 +8515,43 @@
   },
   {
     "type": "post",
+    "url": "payments/methods",
+    "title": "Create Payment Method",
+    "name": "CreatePaymentMethod",
+    "group": "Payments",
+    "version": "0.1.0",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n\"PaymentMethod\" : {\n    \"title\":\"test\"\n }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 201 created\n{\n  \"PaymentMethod\": {\n      \"id\": \"43\",\n      \"title\": \"test6\",\n      \"is_actual\": null,\n      \"is_visible\": true,\n      \"is_external\": null\n  },\n  \"msg\": \"Successfully created the requested payment method\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "  HTTP/1.1 400 Bad Request\n  {\n  \"msg\": \"Failed to create the requested payment method\",\n  \"errors\": {\n      \"title\": [\n          \"The payment method title must remain unique\"\n      ]\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "Payments"
+  },
+  {
+    "type": "post",
     "url": "payments/main",
     "title": "Create new Request Payment",
     "name": "CreateRequestPayment",
@@ -8467,6 +8574,49 @@
           "type": "json"
         }
       ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "Payments"
+  },
+  {
+    "type": "delete",
+    "url": "/payments/methods/:id",
+    "title": "Delete Payment Method",
+    "name": "DeletePaymentMethod",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Mandatory Payment Method id</p>"
+          }
+        ]
+      }
+    },
+    "group": "Payments",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "   HTTP/1.1 200 OK\n{\n \"msg\": \"Successfully deleted the requested payment method!\"\n}",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>Descriptive message.</p>"
+          }
+        ]
+      }
     },
     "filename": "apidoc/yasmine.php",
     "groupTitle": "Payments"
@@ -8560,6 +8710,86 @@
     "groupTitle": "Payments"
   },
   {
+    "type": "get",
+    "url": "/payments/logs/:request_id",
+    "title": "Request Payments Logs",
+    "name": "RequestPaymentsLogs",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "request_id",
+            "description": "<p>Mandatory request_id</p>"
+          }
+        ]
+      }
+    },
+    "group": "Payments",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " HTTP/1.1 200 OK\n  {\n   \"logs\": [\n        {\n          \"RequestPayment\": {\n              \"id\": \"2\",\n              \"payment_method_id\": \"3\",\n              \"payment_amount\": \"250.00\",\n              \"payment_date\": \"2009-11-03\",\n              \"request_id\": \"332409\",\n              \"attachment_file\": \"/attachments/payment_evidence/30/12572396223d-cars-3.jpg\",\n              \"currency_id\": \"3\",\n              \"created\": \"2009-11-03 11:13:42\",\n              \"conversion_rate\": \"1.0000\",\n              \"added_by\": null,\n              \"visa_card_no\": null,\n              \"visa_exp_date\": null,\n              \"approved\": null,\n              \"is_option\": \"0\",\n              \"external_agency_id\": null,\n              \"notes\": null,\n              \"scheduled_payment_id\": null\n          },\n          \"AddedBy\": {\n              \"name\": null\n          },\n          \"PaymentMethod\": {\n              \"id\": \"3\",\n              \"title\": \"Western Union\"\n          },\n          \"Currency\": {\n              \"id\": \"3\",\n              \"abbrev\": \"EGP\",\n              \"symbol\": \"L.E.\"\n          }\n      }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "Payments"
+  },
+  {
+    "type": "put",
+    "url": "payments/methods/:id",
+    "title": "Update Payment Method",
+    "name": "UpdatePaymentMethod",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Mandatory methodId</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n\"PaymentMethod\" : {\n    \"title\":\"testx\"\n }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "group": "Payments",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n{\n  \"PaymentMethod\": {\n      \"id\": \"43\",\n      \"title\": \"test6\",\n      \"is_actual\": null,\n      \"is_visible\": true,\n      \"is_external\": null\n  },\n  \"msg\": \"Successfully updated the requested payment method\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "  HTTP/1.1 400 Bad Request\n  {\n  \"msg\": Failed to update the requested payment method\",\n  \"errors\": {\n      \"title\": [\n          \"The payment method title must remain unique\"\n      ]\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "Payments"
+  },
+  {
     "type": "put",
     "url": "payments/main/:id",
     "title": "Update Request Payment",
@@ -8591,6 +8821,57 @@
         {
           "title": "Success-Response:",
           "content": "    HTTP/1.1 200 ok\n{\n \"RequestPayment\": {\n         \"id\": \"3\",\n         \"payment_method_id\": \"4\",\n         \"payment_amount\": \"210.00\",\n         \"payment_date\": \"2009-11-03\",\n         \"request_id\": \"30\",\n         \"attachment_file\": \"/attachments/payment_evidence/30/12572397523d-cars-3.jpg\",\n         \"currency_id\": \"2\",\n         \"created\": \"2009-11-03 11:15:52\",\n         \"conversion_rate\": \"1.0000\",\n         \"added_by\": null,\n         \"visa_card_no\": false,\n         \"visa_exp_date\": null,\n         \"approved\": null,\n         \"is_option\": \"0\",\n         \"external_agency_id\": null,\n         \"notes\": null,\n         \"scheduled_payment_id\": null\n     },\n     \"AddedBy\": {\n         \"name\": null\n     },\n     \"PaymentMethod\": {\n         \"id\": \"4\",\n         \"title\": \"To be Paid Upon Arrival\",\n         \"is_actual\": null,\n         \"is_visible\": true,\n         \"is_external\": null\n     },\n     \"Currency\": {\n         \"id\": \"2\",\n         \"currency\": \"United States Dollars\",\n         \"abbrev\": \"USD\",\n         \"symbol\": \"&#36;\",\n         \"symbol_direction\": true,\n         \"is_visible\": true\n     },\n     \"ExternalAgency\": {\n         \"id\": null,\n         \"name\": null,\n         \"contact_person\": null,\n         \"phone\": null,\n         \"mobile\": null,\n         \"fax\": null,\n         \"email\": null,\n         \"address\": null,\n         \"category\": null,\n         \"notes\": null,\n         \"created\": null,\n         \"modified\": null,\n         \"tax_card_num\": null,\n         \"type\": null,\n         \"external_agency_type_id\": null,\n         \"is_visible\": null,\n         \"branch_id\": null\n     }\n  },\n  \"msg\": \"Payment successfully updated\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "Payments"
+  },
+  {
+    "type": "get",
+    "url": "/payments/methods/:id",
+    "title": "View Payment Method",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Mandatory Payment Method id</p>"
+          }
+        ]
+      }
+    },
+    "name": "ViewPaymentMethod",
+    "group": "Payments",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " HTTP/1.1 200 OK\n{\n \"PaymentMethod\": {\n     \"id\": \"43\",\n     \"title\": \"testbf\",\n     \"is_actual\": null,\n     \"is_visible\": true,\n    \"is_external\": null\n },\n \"msg\": \"Fetched payment method!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "Payments"
+  },
+  {
+    "type": "get",
+    "url": "/payments/methods",
+    "title": "List Payment Methods",
+    "name": "ViewPaymentMethod",
+    "group": "Payments",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "  HTTP/1.1 200 OK\n{\n  \"methods\": [\n      {\n          \"id\": \"1\",\n          \"title\": \"Online Payment\",\n          \"is_actual\": true,\n          \"is_visible\": true,\n          \"is_external\": null\n      },\n   ]\n }",
           "type": "json"
         }
       ]
@@ -10130,6 +10411,43 @@
     "groupTitle": "Tasks"
   },
   {
+    "type": "put",
+    "url": "/users/change-password",
+    "title": "Change Password",
+    "name": "ChangePassword",
+    "group": "Users",
+    "version": "0.1.0",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n \"old_password\":\"xxx\",\n \"new_password\":\"***\",\n \"confirm_new_password\":\"***\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "   HTTP/1.1 200\n{\n \"msg\": \"Successfully updated the requested password\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": " HTTP/1.1 400 Bad Request\n{\n\"msg\": \"Old Password didn't match our records\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "Users"
+  },
+  {
     "type": "get",
     "url": "/users/all",
     "title": "List all Users",
@@ -10277,6 +10595,85 @@
       ]
     },
     "filename": "apidoc/yasmine.php",
+    "groupTitle": "Users"
+  },
+  {
+    "type": "put",
+    "url": "/users/new-password/:code/:user_id",
+    "title": "Request New Password",
+    "name": "RequestNewPassword",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "code",
+            "description": "<p>Mandatory Sent Mail code</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "user_id",
+            "description": "<p>Mandatory $userId</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n \"password\" : \"@test\",\n \"confirm_password\" : \"@test\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "group": "Users",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "   HTTP/1.1 200\n{\n \"msg\": \"Successfully updated the requested password\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/yasmine.php",
+    "groupTitle": "Users"
+  },
+  {
+    "type": "PUT",
+    "url": "/users/forget-password",
+    "title": "Reset Password",
+    "name": "ResetPassword",
+    "group": "Users",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200\n{\n\t \"Staff\": {\n\t \n\t     \"email\":\"ayman.badry@deemalab.com\"\n\t }\n}",
+          "type": "json"
+        },
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 Ok\n   {\n    \"msg\": \"an email has been sent\",\n  }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n    \"msg\": \"No user was found with the submitted email address.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
     "groupTitle": "Users"
   },
   {
