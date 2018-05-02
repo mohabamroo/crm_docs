@@ -4144,45 +4144,6 @@
     "groupTitle": "Items_Hotels"
   },
   {
-    "type": "POST",
-    "url": "/items/meals/:requestId",
-    "title": "Create a new Meal",
-    "name": "CreateMeal",
-    "version": "0.1.0",
-    "group": "Items_Meals",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "requestId",
-            "description": "<p>lead Id</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Request-Example:",
-          "content": "{\n      \"RequestsMeal\":{\n               \"restaurant_id\": 6,\n               \"pax\":5,\n               \"city_id\":64,\n               \"extra_meal_type_id\":7,\n               \"price\" :2000,\n               \"currency_id\":1,\n               \"date\":\"2017-10-23\"\n   }\n }",
-          "type": "json"
-        }
-      ]
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "  HTTP/1.1 201 Created\n{\nRequestsMeal\": {\n            \"id\": \"33276\",\n            \"request_id\": \"1000\",\n            \"extra_meal_type_id\": \"7\",\n            \"city_id\": \"64\",\n            \"restaurant_id\": \"6\",\n            \"date\": \"2017-10-23\",\n            \"pax_num\": null,\n            \"notes\": null,\n            \"reservation_status_id\": \"1\",\n            \"created\": \"2018-02-19 12:59:11\",\n            \"pax\": \"4\",\n            \"is_option\": null,\n            \"added_by\": \"1\",\n            \"price\": \"2000.00\",\n            \"currency_id\": \"1\",\n            \"acc_journal_id\": null,\n            \"added_by_guide_id\": null,\n            \"contract_rate\": null,\n            \"contract_currency_id\": null,\n            \"cost_rate\": null,\n            \"cost_currency_id\": null,\n            \"parent_id\": null,\n            \"is_trip\": false,\n            \"option_payment_method\": null\n        },\n        \"Currency\": {\n            \"id\": \"1\",\n            \"currency\": \"Euro\",\n            \"abbrev\": \"EUR\",\n            \"symbol\": \"&#8364;\",\n            \"symbol_direction\": true,\n            \"is_visible\": true\n        },\n        \"Restaurant\": {\n            \"id\": \"6\",\n            \"name\": \"Pharoahs Resturant \",\n            \"address\": \"In the front Of Zoser Pyramids \",\n            \"phone\": null,\n            \"fax\": \"\",\n            \"email\": \"\",\n            \"restaurant_category_id\": \"2\",\n            \"city_id\": \"1\",\n            \"website\": \"\",\n            \"tax_card_num\": null,\n            \"payment_terms\": \"0\",\n            \"is_visible\": true,\n            \"contact_person\": null,\n            \"payment_information\": null\n        },\n        \"ExtraMealType\": {\n            \"id\": \"7\",\n            \"title\": \"Christmas Gala Dinner\",\n            \"duration\": null,\n            \"is_visible\": true\n        },\n        \"City\": {\n            \"id\": \"64\",\n            \"parent_id\": \"0\",\n            \"name\": \"Zürich\",\n            \"branch_id\": \"0\",\n            \"country_id\": \"207\",\n            \"is_visible\": true,\n            \"lat\": null,\n            \"lng\": null\n        }\n    },\n   \"msg\": \"Successfully Added New Extra Meal\"\n }",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/main.php",
-    "groupTitle": "Items_Meals"
-  },
-  {
     "type": "PUT",
     "url": "/items/meals/:requestId/:recordId",
     "title": "Edit a meal",
@@ -4231,6 +4192,45 @@
         {
           "title": "Error-Response:",
           "content": " HTTP/1.1 404 Not Found\n{\n\"msg\": \"Item not found.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/main.php",
+    "groupTitle": "Items_Meals"
+  },
+  {
+    "type": "POST",
+    "url": "/items/meals/:requestId",
+    "title": "Create a new Meal",
+    "name": "CreateMeal",
+    "version": "0.1.0",
+    "group": "Items_Meals",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "requestId",
+            "description": "<p>lead Id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n      \"RequestsMeal\":{\n               \"restaurant_id\": 6,\n               \"pax\":5,\n               \"city_id\":64,\n               \"extra_meal_type_id\":7,\n               \"price\" :2000,\n               \"currency_id\":1,\n               \"date\":\"2017-10-23\"\n   }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "  HTTP/1.1 201 Created\n{\nRequestsMeal\": {\n            \"id\": \"33276\",\n            \"request_id\": \"1000\",\n            \"extra_meal_type_id\": \"7\",\n            \"city_id\": \"64\",\n            \"restaurant_id\": \"6\",\n            \"date\": \"2017-10-23\",\n            \"pax_num\": null,\n            \"notes\": null,\n            \"reservation_status_id\": \"1\",\n            \"created\": \"2018-02-19 12:59:11\",\n            \"pax\": \"4\",\n            \"is_option\": null,\n            \"added_by\": \"1\",\n            \"price\": \"2000.00\",\n            \"currency_id\": \"1\",\n            \"acc_journal_id\": null,\n            \"added_by_guide_id\": null,\n            \"contract_rate\": null,\n            \"contract_currency_id\": null,\n            \"cost_rate\": null,\n            \"cost_currency_id\": null,\n            \"parent_id\": null,\n            \"is_trip\": false,\n            \"option_payment_method\": null\n        },\n        \"Currency\": {\n            \"id\": \"1\",\n            \"currency\": \"Euro\",\n            \"abbrev\": \"EUR\",\n            \"symbol\": \"&#8364;\",\n            \"symbol_direction\": true,\n            \"is_visible\": true\n        },\n        \"Restaurant\": {\n            \"id\": \"6\",\n            \"name\": \"Pharoahs Resturant \",\n            \"address\": \"In the front Of Zoser Pyramids \",\n            \"phone\": null,\n            \"fax\": \"\",\n            \"email\": \"\",\n            \"restaurant_category_id\": \"2\",\n            \"city_id\": \"1\",\n            \"website\": \"\",\n            \"tax_card_num\": null,\n            \"payment_terms\": \"0\",\n            \"is_visible\": true,\n            \"contact_person\": null,\n            \"payment_information\": null\n        },\n        \"ExtraMealType\": {\n            \"id\": \"7\",\n            \"title\": \"Christmas Gala Dinner\",\n            \"duration\": null,\n            \"is_visible\": true\n        },\n        \"City\": {\n            \"id\": \"64\",\n            \"parent_id\": \"0\",\n            \"name\": \"Zürich\",\n            \"branch_id\": \"0\",\n            \"country_id\": \"207\",\n            \"is_visible\": true,\n            \"lat\": null,\n            \"lng\": null\n        }\n    },\n   \"msg\": \"Successfully Added New Extra Meal\"\n }",
           "type": "json"
         }
       ]
@@ -4455,54 +4455,6 @@
   {
     "type": "DELETE",
     "url": "/items/sightseeings/:requestId/:Id",
-    "title": "view an existing Sightseeing",
-    "version": "0.1.0",
-    "name": "DeleteThingsToDoItem",
-    "group": "Items_ThingsToDo",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "requestId",
-            "description": "<p>lead Id</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "Id",
-            "description": "<p>sightseeing Id</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Response-Example:",
-          "content": "\n {\n    \"RequestsThingstodo\": {\n        \"id\": \"306\",\n        \"request_id\": \"4572\",\n        \"thingstodo_id\": \"3\",\n        \"day\": \"7\",\n        \"start_time\": null,\n        \"end_time\": null,\n        \"price\": null,\n        \"currency_id\": null,\n        \"notes\": null,\n        \"guide_id\": null,\n        \"leader_id\": null,\n        \"date\": \"2010-02-20\",\n        \"pax\": null,\n        \"is_option\": null,\n        \"added_by\": \"51\",\n        \"cost_currency_id\": null,\n        \"cost_value\": null,\n        \"acc_journal_id\": null,\n        \"created\": null,\n        \"added_by_guide_id\": null,\n        \"contract_rate\": null,\n        \"contract_currency_id\": null,\n        \"parent_id\": null,\n        \"is_trip\": false,\n        \"tour_type\": null,\n        \"external_agency_id\": null,\n        \"guide_language_id\": null,\n        \"reservation_status_id\": \"1\",\n        \"pickup_location\": null,\n        \"dropoff_location\": null,\n        \"option_payment_method\": null\n    },\n    \"AddedBy\": {\n        \"name\": \"Amna Wasly\"\n    },\n    \"Thingstodo\": {\n        \"name\": \"Salah El Din / Mohamed Ali Citadel\"\n    },\n    \"Currency\": {\n        \"abbrev\": null\n    },\n    \"RequestsTodosCategory\": [\n        {\n            \"id\": \"1\",\n            \"requests_thingstodo_id\": \"306\",\n            \"thingstodos_category_id\": null,\n            \"qty\": \"1\"\n        }\n    ],\n    \"msg\": \"Data found successfully\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "{\n \"msg\": \"Data not found\",\n \"errors\": [\n     \"Id not found.\"\n   ]\n }",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/main.php",
-    "groupTitle": "Items_ThingsToDo"
-  },
-  {
-    "type": "DELETE",
-    "url": "/items/sightseeings/:requestId/:Id",
     "title": "Delete an existing Sightseeing",
     "version": "0.1.0",
     "name": "DeleteThingsToDoItem",
@@ -4541,6 +4493,54 @@
         {
           "title": "Error-Response:",
           "content": "\n  {\n    \"msg\": \"Request not found.\",\n    \"errors\": {\n        \"msg\": \"Invalid Lead ID provided.\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/main.php",
+    "groupTitle": "Items_ThingsToDo"
+  },
+  {
+    "type": "DELETE",
+    "url": "/items/sightseeings/:requestId/:Id",
+    "title": "view an existing Sightseeing",
+    "version": "0.1.0",
+    "name": "DeleteThingsToDoItem",
+    "group": "Items_ThingsToDo",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "requestId",
+            "description": "<p>lead Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "Id",
+            "description": "<p>sightseeing Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Response-Example:",
+          "content": "\n {\n    \"RequestsThingstodo\": {\n        \"id\": \"306\",\n        \"request_id\": \"4572\",\n        \"thingstodo_id\": \"3\",\n        \"day\": \"7\",\n        \"start_time\": null,\n        \"end_time\": null,\n        \"price\": null,\n        \"currency_id\": null,\n        \"notes\": null,\n        \"guide_id\": null,\n        \"leader_id\": null,\n        \"date\": \"2010-02-20\",\n        \"pax\": null,\n        \"is_option\": null,\n        \"added_by\": \"51\",\n        \"cost_currency_id\": null,\n        \"cost_value\": null,\n        \"acc_journal_id\": null,\n        \"created\": null,\n        \"added_by_guide_id\": null,\n        \"contract_rate\": null,\n        \"contract_currency_id\": null,\n        \"parent_id\": null,\n        \"is_trip\": false,\n        \"tour_type\": null,\n        \"external_agency_id\": null,\n        \"guide_language_id\": null,\n        \"reservation_status_id\": \"1\",\n        \"pickup_location\": null,\n        \"dropoff_location\": null,\n        \"option_payment_method\": null\n    },\n    \"AddedBy\": {\n        \"name\": \"Amna Wasly\"\n    },\n    \"Thingstodo\": {\n        \"name\": \"Salah El Din / Mohamed Ali Citadel\"\n    },\n    \"Currency\": {\n        \"abbrev\": null\n    },\n    \"RequestsTodosCategory\": [\n        {\n            \"id\": \"1\",\n            \"requests_thingstodo_id\": \"306\",\n            \"thingstodos_category_id\": null,\n            \"qty\": \"1\"\n        }\n    ],\n    \"msg\": \"Data found successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n \"msg\": \"Data not found\",\n \"errors\": [\n     \"Id not found.\"\n   ]\n }",
           "type": "json"
         }
       ]
@@ -6140,39 +6140,6 @@
     "groupTitle": "Lead"
   },
   {
-    "type": "get",
-    "url": "/requests/files/:request_id",
-    "title": "List Lead's Files",
-    "version": "0.1.0",
-    "name": "ListFiles",
-    "group": "Lead",
-    "description": "<p>List of urls (files/attachments) attached to this lead.</p>",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "request_id",
-            "description": "<p>Mandatory REQUEST ID.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n \"files\": []\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "apidoc/main.php",
-    "groupTitle": "Lead"
-  },
-  {
     "type": "post",
     "url": "/requests/files/:request_id",
     "title": "Delete Lead's Files",
@@ -6213,6 +6180,39 @@
         {
           "title": "Error-Response:",
           "content": "HTTP/1.1 400 Bad Request\n  {\n      \"msg\": \"Not all files were deleted.\",\n      \"failed\": [\n          \"user_files_uploads/Request/23/user_files_uploads\\\\Request\\\\23\\\\14642470_1269141953120551_1685851538751829764_n.jpg\"\n      ]\n  }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/main.php",
+    "groupTitle": "Lead"
+  },
+  {
+    "type": "get",
+    "url": "/requests/files/:request_id",
+    "title": "List Lead's Files",
+    "version": "0.1.0",
+    "name": "ListFiles",
+    "group": "Lead",
+    "description": "<p>List of urls (files/attachments) attached to this lead.</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "request_id",
+            "description": "<p>Mandatory REQUEST ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n \"files\": []\n}",
           "type": "json"
         }
       ]
@@ -10576,6 +10576,25 @@
       ]
     },
     "filename": "apidoc/yasmine.php",
+    "groupTitle": "Users"
+  },
+  {
+    "type": "DELETE",
+    "url": "/api-auth/logout-api",
+    "title": "Logout User",
+    "name": "LogoutUser",
+    "group": "Users",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "success-Response:",
+          "content": "HTTP/1.1 200\n {\n     \"msg\": \"User logged out successfully \"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "apidoc/mokhtar.php",
     "groupTitle": "Users"
   },
   {
