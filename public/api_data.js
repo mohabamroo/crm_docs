@@ -1,7 +1,7 @@
 define({ "api": [
   {
     "type": "post",
-    "url": "api_auth/login_api/",
+    "url": "api-auth/login/",
     "title": "Login",
     "version": "0.1.0",
     "name": "GetUser",
@@ -10580,7 +10580,7 @@ define({ "api": [
   },
   {
     "type": "DELETE",
-    "url": "/api-auth/logout-api",
+    "url": "api-auth/logout",
     "title": "Logout User",
     "name": "LogoutUser",
     "group": "Users",
